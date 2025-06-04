@@ -19,6 +19,7 @@ import { Badge } from "./ui/badge";
 import ProjectsGallery from "./ProjectsGallery";
 import SkillsSection from "./SkillsSection";
 import ContactSection from "./ContactSection";
+import BackgroundAnimation from "./bgAnimation/BackgroundAnimation";
 
 const Home = () => {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -106,9 +107,12 @@ const Home = () => {
       {/* Hero Section */}
       <section
         id="home"
-        className="pt-32 pb-20 min-h-screen flex items-center bg-background"
+        className="pt-32 pb-20 min-h-screen flex items-center bg-background relative overflow-hidden"
       >
-        <div className="container mx-auto px-4">
+        <div className="absolute inset-0 z-0">
+          <BackgroundAnimation />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -116,10 +120,10 @@ const Home = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Hi, I'm John Doe
+              Hi, I'm Mike Zhan
             </h1>
             <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8">
-              Full Stack Developer
+              Full Stack Developer | Software Engineer | GTM Analyst
             </h2>
             <p className="text-lg mb-10">
               I build modern, responsive web applications with a focus on user
@@ -147,9 +151,9 @@ const Home = () => {
           >
             <button
               onClick={() => scrollToSection("projects")}
-              className="animate-bounce p-2 rounded-full border border-muted"
+              className="animate-bounce p-3 rounded-full border-2 border-primary hover:border-primary/80 transition-colors"
             >
-              <ChevronDown className="h-6 w-6" />
+              <ChevronDown className="h-6 w-6 text-primary" />
             </button>
           </motion.div>
         </div>
@@ -489,19 +493,6 @@ const Home = () => {
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">My Projects</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A collection of my recent work across web development, design, and
-              more.
-            </p>
-          </motion.div>
           <ProjectsGallery />
         </div>
       </section>

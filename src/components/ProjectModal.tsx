@@ -57,8 +57,8 @@ const ProjectModal = ({
       "Framer Motion",
       "Vite",
     ],
-    liveUrl: "https://example.com",
-    repoUrl: "https://github.com/username/portfolio",
+    liveUrl: "https://mike-zhan.com",
+    repoUrl: "https://github.com/mikezhan88/portfolio",
   };
 
   const displayProject = project || defaultProject;
