@@ -219,7 +219,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className = "" }) => {
         <div className="mb-8">
           <h3 className="text-2xl font-semibold mb-4">Let's Connect</h3>
           <p className="text-muted-foreground mb-6">
-            I'm always open to discussing new projects, creative ideas or
+            I'm always open to discussing new projects, creative ideas, or
             opportunities to be part of your vision.
           </p>
           <div className="flex flex-col space-y-4">

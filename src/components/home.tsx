@@ -47,6 +47,45 @@ const Home = () => {
     }
   };
 
+  // Timeline data
+  const timeline = [
+    {
+      title: "GTM Analyst",
+      company: "Stacked",
+      date: "2025 - Present",
+      description:
+        "Led go-to-market strategy by defining messaging, pricing, and campaign tactics that reduced churn by 20%. Built KPI dashboards, ran A/B tests, and scaled growth through data-driven marketing and strategic partnerships.",
+    },
+    {
+      title: "Software Engineer",
+      company: "Blue Modern Advisory",
+      date: "2023 - 2024",
+      description:
+        "Developed and launched a modern, responsive website for a career consulting firm, leveraging React, Tailwind, and WordPress. Managed the backend database and optimized international accessibility, helping attract global clients.",
+    },
+    {
+      title: "Client Relationship Manager",
+      company: "Omneky",
+      date: "2020 - 2021",
+      description:
+        "Managed B2B client relationships and led outbound prospecting efforts, leveraging CRM tools and marketing analytics to identify opportunities, personalize outreach, and drive customer engagement.",
+    },
+    {
+      title: "Software Engineer Intern",
+      company: "Eliqs",
+      date: "2020 - 2020",
+      description:
+        "Started my professional journey building a responsive website frmo scratch and learning modern development practices. Gained experience in React, JavaScript, GCP, and backend technologies.",
+    },
+    {
+      title: "B.S. Computer Science",
+      company: "University of California, Los Angeles (UCLA)",
+      date: "2019 - 2023",
+      description:
+        "Graduated with honors. Focused on software engineering, AI, Machine Learning, algorithms, and data structures. Joined ACM(CS org), DSP(Premier Business Fraternity), & Theta Chi(Social Fraternity), building a strong double foundation in computer science and business.",
+    },
+  ];
+
   return (
     <div
       className={`min-h-screen bg-background ${theme === "dark" ? "dark" : ""}`}
@@ -124,6 +163,15 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
+            <div className="flex justify-center mb-6">
+              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20">
+                <img
+                  src="/pfp.jpeg"
+                  alt="Profile Picture"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Michael Zhan
             </h1>
@@ -131,9 +179,10 @@ const Home = () => {
               Software Engineer | GTM Strategist | Content Creator
             </h2>
             <p className="text-lg mb-10">
-              I build modern, responsive web applications with a focus on user
-              experience and performance. Specializing in React, Node.js, and
-              cloud technologies to create scalable solutions.
+            Full-stack developer with a passion for building thoughtful, 
+            user-focused digital products. With experience across startups and tech stacks, 
+            I bring ideas to life through clean code, intuitive design, and practical 
+            problem-solving.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button onClick={() => scrollToSection("projects")} size="lg">
@@ -155,7 +204,7 @@ const Home = () => {
             className="flex justify-center mt-16"
           >
             <button
-              onClick={() => scrollToSection("projects")}
+              onClick={() => scrollToSection("about")}
               className="animate-bounce p-3 rounded-full border-2 border-primary hover:border-primary/80 transition-colors"
             >
               <ChevronDown className="h-6 w-6 text-primary" />
@@ -190,29 +239,11 @@ const Home = () => {
               <Card className="bg-card border-border">
                 <CardContent className="pt-6">
                   <div className="text-center mb-6">
-                    <div className="w-32 h-32 mx-auto -mt-6 mb-2 rounded-full overflow-hidden border-4 border-primary/20">
-                      <img
-                        src="/pfp.jpeg"
-                        alt="Profile Picture"
-                        className="w-full h-full object-cover object-top"
-                      />
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
-                      John Doe
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      Full Stack Developer
-                    </p>
-                    <div className="flex items-center justify-center text-sm text-muted-foreground mb-4">
-                      <MapPin className="h-4 w-4 mr-1" />
-                      San Francisco, CA
-                    </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Passionate developer with a love for creating innovative
-                    solutions. I enjoy turning complex problems into simple,
-                    beautiful designs and building applications that make a
-                    difference.
+                  Hi! I'm Mike, a full-stack developer and GTM strategist passionate about building impactful digital products and bringing them to market. I earned my Computer Science degree from UCLA and have worked across roles in engineering and growth, from crafting AI-powered mobile apps like LiftID to leading data-driven go-to-market campaigns that reduced churn and grew engagement by over 150%. I've built everything from custom websites and internal tools to machine learning models and consumer-facing platforms.
+
+I thrive at the intersection of tech and strategy — combining hands-on coding with user empathy, data analysis, and creative problem-solving. Outside of work, I enjoy bartending, day trading, and creating content — always looking for new ways to learn, connect, and build.
                   </p>
                 </CardContent>
               </Card>
@@ -238,7 +269,7 @@ const Home = () => {
                       <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          Led team of 8 developers on enterprise project
+                          High School Valedictorian
                         </h4>
                       </div>
                     </div>
@@ -246,7 +277,7 @@ const Home = () => {
                       <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          Open source contributor with 50+ repositories
+                          Contributed/Created 20+ projects
                         </h4>
                       </div>
                     </div>
@@ -254,7 +285,7 @@ const Home = () => {
                       <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          Speaker at 5+ tech conferences
+                          Participated in 5+ hackathons
                         </h4>
                       </div>
                     </div>
@@ -262,7 +293,7 @@ const Home = () => {
                       <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          Mentored 20+ junior developers
+                          Deans List Honors UCLA
                         </h4>
                       </div>
                     </div>
@@ -270,7 +301,39 @@ const Home = () => {
                       <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          Graduated Summa Cum Laude from UCLA
+                          Ran a Marathon
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="font-medium text-foreground mb-1">
+                          Bench Press PR of 225 lbs
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="font-medium text-foreground mb-1">
+                          Hiked Mount Storm King in Washington
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="font-medium text-foreground mb-1">
+                          Bartended Large Creator Event
+                        </h4>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
+                      <div>
+                        <h4 className="font-medium text-foreground mb-1">
+                          Blessed with great friends and family
                         </h4>
                       </div>
                     </div>
@@ -370,94 +433,37 @@ const Home = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-6">
-                  {/* Timeline Item 1 */}
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-3 h-3 bg-primary rounded-full mt-2"></div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-foreground">
-                          Senior Full Stack Developer
-                        </h4>
-                        <Badge variant="secondary">2022 - Present</Badge>
+                <div className="grid grid-cols-[2.5rem_1fr] items-start">
+                  {timeline.map((item, idx) => (
+                    <React.Fragment key={item.title + item.company}>
+                      <div className="flex flex-col items-center h-full relative">
+                        {/* Top line (not for first item) */}
+                        {idx !== 0 && (
+                          <div className="w-1 bg-primary/30 -mb-1" style={{ height: '1rem' }} />
+                        )}
+                        {/* Bullet */}
+                        <div className={`w-3 h-3 bg-primary rounded-full z-10 ${idx === 0 ? 'mt-2' : ''}`} />
+                        {/* Bottom line (not for last item) */}
+                        {idx !== timeline.length - 1 && (
+                          <div className="flex-1 w-1 bg-primary/30 -mt-1" />
+                        )}
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Tech Innovations Inc.
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Leading development of scalable web applications using
-                        React, Node.js, and cloud technologies. Mentoring junior
-                        developers and architecting solutions for enterprise
-                        clients.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Timeline Item 2 */}
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-3 h-3 bg-primary rounded-full mt-2"></div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-foreground">
-                          Full Stack Developer
-                        </h4>
-                        <Badge variant="secondary">2020 - 2022</Badge>
+                      <div className={`pb-10 ${idx === 0 ? 'pt-0' : 'pt-1'}`}>
+                        <div className="flex items-center justify-between mb-1">
+                          <h4 className="font-semibold text-foreground text-xl md:text-2xl">
+                            {item.title}
+                          </h4>
+                          <span className="ml-4">
+                            <span className="inline-block bg-muted text-muted-foreground px-3 py-1 rounded-lg text-xs font-semibold">
+                              {item.date}
+                            </span>
+                          </span>
+                        </div>
+                        <p className="text-muted-foreground font-medium mb-1">{item.company}</p>
+                        <p className="text-muted-foreground">{item.description}</p>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        StartupXYZ
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Developed and maintained multiple web applications from
-                        concept to deployment. Collaborated with
-                        cross-functional teams to deliver high-quality software
-                        solutions.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Timeline Item 3 */}
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-3 h-3 bg-primary rounded-full mt-2"></div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-foreground">
-                          Junior Developer
-                        </h4>
-                        <Badge variant="secondary">2019 - 2020</Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        WebDev Solutions
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Started my professional journey building responsive
-                        websites and learning modern development practices.
-                        Gained experience in React, JavaScript, and backend
-                        technologies.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Timeline Item 4 - Education */}
-                  <div className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 w-3 h-3 bg-primary rounded-full mt-2"></div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-foreground">
-                          B.S. Computer Science
-                        </h4>
-                        <Badge variant="outline">2015 - 2019</Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        University of California, Los Angeles (UCLA)
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        Graduated with honors. Focused on software engineering,
-                        algorithms, and data structures. Participated in
-                        hackathons and coding competitions, building a strong
-                        foundation in computer science.
-                      </p>
-                    </div>
-                  </div>
+                    </React.Fragment>
+                  ))}
                 </div>
               </CardContent>
             </Card>
