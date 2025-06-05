@@ -125,14 +125,10 @@ const SkillsSection: React.FC<SkillsSectionProps> = ({
                   <Card>
                     <CardContent className="pt-6">
                       <div className="flex justify-between items-center mb-2">
-                        <h3 className="font-medium text-lg">{skill.name}</h3>
-                        <span className="text-sm text-muted-foreground">
-                          {skill.level}%
-                        </span>
+                        <h3 className="font-semibold text-xl">{skill.name}</h3>
                       </div>
-                      <Progress value={skill.level} className="h-2 mb-3" />
                       {skill.description && (
-                        <p className="text-sm text-muted-foreground mt-2">
+                        <p className="text-base text-muted-foreground mt-3">
                           {skill.description}
                         </p>
                       )}

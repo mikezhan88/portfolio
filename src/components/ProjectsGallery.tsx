@@ -43,9 +43,6 @@ const ProjectsGallery = ({
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
             My Projects
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A collection of my recent work across web development, design, and more.
-          </p>
         </div>
         {/* Category filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">

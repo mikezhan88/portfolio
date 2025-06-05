@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send, Instagram } from "lucide-react";
 
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -77,6 +77,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className = "" }) => {
       name: "LinkedIn",
       icon: <Linkedin className="h-6 w-6" />,
       href: "https://www.linkedin.com/in/michael-zhan-a437131b6/",
+    },
+    {
+      name: "Instagram",
+      icon: <Instagram className="h-6 w-6" />,
+      href: "https://www.instagram.com/mikezhan88/",
     },
     {
       name: "Email",

@@ -11,6 +11,11 @@ import {
   Camera,
   Music,
   Plane,
+  Mountain,
+  Gamepad2,
+  BookOpen,
+  Crown,
+  Key,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
@@ -120,10 +125,10 @@ const Home = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Hi, I'm Mike Zhan
+              Michael Zhan
             </h1>
             <h2 className="text-2xl md:text-3xl text-muted-foreground mb-8">
-              Full Stack Developer | Software Engineer | GTM Analyst
+              Software Engineer | GTM Strategist | Content Creator
             </h2>
             <p className="text-lg mb-10">
               I build modern, responsive web applications with a focus on user
@@ -172,9 +177,6 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               About Me
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get to know more about my background and what drives me.
-            </p>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -188,11 +190,11 @@ const Home = () => {
               <Card className="bg-card border-border">
                 <CardContent className="pt-6">
                   <div className="text-center mb-6">
-                    <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20">
+                    <div className="w-32 h-32 mx-auto -mt-6 mb-2 rounded-full overflow-hidden border-4 border-primary/20">
                       <img
-                        src="https://api.dicebear.com/7.x/avataaars/svg?seed=john-doe&backgroundColor=b6e3f4,c0aede,d1d4f9"
-                        alt="John Doe Profile"
-                        className="w-full h-full object-cover"
+                        src="/pfp.jpeg"
+                        alt="Profile Picture"
+                        className="w-full h-full object-cover object-top"
                       />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">
@@ -226,7 +228,7 @@ const Home = () => {
               <Card className="bg-card border-border">
                 <CardHeader>
                   <CardTitle className="flex items-center text-foreground">
-                    <Heart className="h-5 w-5 mr-2" />
+                    <Key className="h-5 w-5 mr-2" />
                     Personal Achievements
                   </CardTitle>
                 </CardHeader>
@@ -238,10 +240,6 @@ const Home = () => {
                         <h4 className="font-medium text-foreground mb-1">
                           Led team of 8 developers on enterprise project
                         </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Successfully delivered a $2M project 3 months ahead of
-                          schedule
-                        </p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
@@ -250,9 +248,6 @@ const Home = () => {
                         <h4 className="font-medium text-foreground mb-1">
                           Open source contributor with 50+ repositories
                         </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Maintained popular React libraries with 10k+ downloads
-                        </p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
@@ -261,9 +256,6 @@ const Home = () => {
                         <h4 className="font-medium text-foreground mb-1">
                           Speaker at 5+ tech conferences
                         </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Presented on modern web development and best practices
-                        </p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
@@ -272,9 +264,6 @@ const Home = () => {
                         <h4 className="font-medium text-foreground mb-1">
                           Mentored 20+ junior developers
                         </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Helped early-career developers advance to senior roles
-                        </p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
@@ -283,9 +272,6 @@ const Home = () => {
                         <h4 className="font-medium text-foreground mb-1">
                           Graduated Summa Cum Laude from UCLA
                         </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Top 5% of Computer Science graduating class
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -310,50 +296,42 @@ const Home = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-6">
                   <div className="text-center">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Code className="h-6 w-6 text-primary" />
+                      <Mountain className="h-6 w-6 text-primary" />
                     </div>
-                    <h4 className="font-medium text-foreground mb-2">
-                      Open Source
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Contributing to open source projects and building tools
-                      for the developer community.
-                    </p>
+                    <h4 className="font-medium text-foreground mb-2">Hiking</h4>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Gamepad2 className="h-6 w-6 text-primary" />
+                    </div>
+                    <h4 className="font-medium text-foreground mb-2">Gaming</h4>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <BookOpen className="h-6 w-6 text-primary" />
+                    </div>
+                    <h4 className="font-medium text-foreground mb-2">Reading</h4>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <Crown className="h-6 w-6 text-primary" />
+                    </div>
+                    <h4 className="font-medium text-foreground mb-2">Chess</h4>
                   </div>
                   <div className="text-center">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                       <Camera className="h-6 w-6 text-primary" />
                     </div>
-                    <h4 className="font-medium text-foreground mb-2">
-                      Photography
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      Capturing moments and exploring the world through the lens
-                      of my camera.
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <Music className="h-6 w-6 text-primary" />
-                    </div>
-                    <h4 className="font-medium text-foreground mb-2">Music</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Playing guitar and discovering new artists across
-                      different genres.
-                    </p>
+                    <h4 className="font-medium text-foreground mb-2">Photography</h4>
                   </div>
                   <div className="text-center">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                       <Plane className="h-6 w-6 text-primary" />
                     </div>
                     <h4 className="font-medium text-foreground mb-2">Travel</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Exploring new cultures and gaining inspiration from
-                      different places around the world.
-                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -375,9 +353,6 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
               My Journey
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A timeline of my professional and educational milestones.
-            </p>
           </motion.div>
 
           <motion.div
@@ -508,9 +483,6 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Technologies and tools I work with to bring ideas to life.
-            </p>
           </motion.div>
           <SkillsSection />
         </div>
@@ -529,10 +501,6 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Get In Touch
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind or want to collaborate? Feel free to reach
-              out.
-            </p>
           </motion.div>
           <ContactSection />
         </div>
@@ -565,12 +533,12 @@ const Home = () => {
                 LinkedIn
               </a>
               <a
-                href="https://twitter.com"
+                href="https://www.instagram.com/mikezhan88/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                Twitter
+                Instagram
               </a>
             </div>
           </div>

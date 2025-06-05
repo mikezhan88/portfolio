@@ -67,10 +67,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ className = "" }) => 
         className="text-center mb-12"
       >
         <h2 className="text-3xl font-bold mb-4">My Projects</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          Here are some of my recent projects. Each one represents a unique
-          challenge and learning experience.
-        </p>
       </motion.div>
 
       <div className="flex flex-wrap justify-center gap-4 mb-12">
