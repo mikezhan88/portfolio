@@ -86,6 +86,65 @@ const Home = () => {
     },
   ];
 
+  const projects = [
+    {
+      id: "1",
+      title: "Neuron",
+      description: "A full-featured website and webapp for neurotech startup.",
+      images: ["/n1.png", "/n2.png", "/n3.png"],
+      category: "web",
+      technologies: ["React", "Google Cloud", "Python", "HTML/CSS", "JavaScript", "TypeScript"],
+      liveUrl: "https://www.neuroncognition.com",
+      details: "Designed and built a web app and marketing site for a neurotech company that translates brainwave data into actionable insights on workplace productivity and employee well-being.",
+    },
+    {
+      id: "2",
+      title: "Blue Modern Advisory",
+      description: "A full-featured website for career consulting and B2B GTM Strategy Startup",
+      images: ["/bma1.png", "/bma2.png", "/bma3.png"],
+      category: "web",
+      technologies: ["React", "HTML/CSS", "Tailwind", "Framer", "TypeScript"],
+      liveUrl: "https://bluemodernadvisory.com",
+    },
+    {
+      id: "3",
+      title: "LiftID",
+      description: "Fitness App for helping users quickly understand different gym machine use using AI image recognition.",
+      images: ["/l1.PNG", "/l2.PNG", "/l3.PNG", "/l4.PNG", "/l5.PNG", "/l6.PNG"],
+      category: "mobile",
+      technologies: ["React Native", "Google Cloud", "Vertex AI", "Supabase", "Expo"],
+      repoUrl: "https://github.com/mikezhan88/LiftID",
+    },
+    {
+      id: "4",
+      title: "Rate-My-CLub",
+      description: "Full-stack webapp that's a spoof off of rate my professor, but for clubs and events.",
+      images: ["/club.png"],
+      category: "web",
+      technologies: ["MongoDB", "Fast API", "React", "Node JS", "HTML/CSS", "Python"],
+      repoUrl: "https://github.com/mikezhan88/Rate-My-Club",
+    },
+    {
+      id: "5",
+      title: "Brewin-Language Interpreter",
+      description: "Built a custom statically typed language interpreter in Python with support for expressions, lambdas, closures, parameter passing, and lexical scoping.",
+      images: ["/brewin.jpeg"],
+      category: "data",
+      technologies: ["Python"],
+      repoUrl: "https://github.com/mikezhan88/Brewin-Language-Interpreter",
+    },
+    {
+      id: "6",
+      title: "Portfolio Website",
+      description: "Personal portfolio website showcasing projects and skills with a modern, responsive design.",
+      images: ["/port.png"],
+      category: "web",
+      technologies: ["React", "HTML/CSS", "Framer Motion", "Tailwind", "TypeScript"],
+      liveUrl: "https://www.mike-zhan.com",
+      repoUrl: "https://github.com/mikezhan88/portfolio",
+    },
+  ];
+
   return (
     <div
       className={`min-h-screen bg-background ${theme === "dark" ? "dark" : ""}`}
@@ -474,7 +533,7 @@ I thrive at the intersection of tech and strategy — combining hands-on coding 
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <ProjectsGallery />
+          <ProjectsGallery projects={projects} />
         </div>
       </section>
 
@@ -518,7 +577,7 @@ I thrive at the intersection of tech and strategy — combining hands-on coding 
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <p className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} John Doe. All rights reserved.
+                © {new Date().getFullYear()} Michael Zhan. All rights reserved.
               </p>
             </div>
             <div className="flex space-x-4">

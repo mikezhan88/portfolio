@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Send, Instagram } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -41,6 +42,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className = "" }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init("XB0OQjQ2Yd0ypi7ij");
+  }, []);
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,18 +59,40 @@ const ContactSection: React.FC<ContactSectionProps> = ({ className = "" }) => {
 
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
+    try {
+      console.log('Sending email with data:', data);
+      const result = await emailjs.send(
+        'service_3ox34gq',
+        'template_jb3fhui',
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          to_name: 'Michael Zhan',
+        },
+        'XB0OQjQ2Yd0ypi7ij'
+      );
+      console.log('Email sent successfully:', result);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I will get back to you soon.",
+        action: <ToastAction altText="Close">Close</ToastAction>,
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I will get back to you soon.",
-      action: <ToastAction altText="Close">Close</ToastAction>,
-    });
-
-    form.reset();
-    setIsSubmitting(false);
+      form.reset();
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+        action: <ToastAction altText="Close">Close</ToastAction>,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [

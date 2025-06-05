@@ -8,7 +8,7 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  images: string[];
   category: string;
   technologies: string[];
   liveUrl?: string;
@@ -17,12 +17,10 @@ interface Project {
 }
 
 interface ProjectsGalleryProps {
-  projects?: Project[];
+  projects: Project[];
 }
 
-const ProjectsGallery = ({
-  projects = defaultProjects,
-}: ProjectsGalleryProps) => {
+const ProjectsGallery = ({ projects }: ProjectsGalleryProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -68,7 +66,7 @@ const ProjectsGallery = ({
             >
               <div className="aspect-video relative overflow-hidden">
                 <img
-                  src={project.image}
+                  src={project.images[0]}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
@@ -119,83 +117,5 @@ const ProjectsGallery = ({
     </div>
   );
 };
-
-// Default projects data for when no props are provided
-const defaultProjects: Project[] = [
-  {
-    id: "1",
-    title: "E-commerce Platform",
-    description:
-      "A full-featured online store with product listings, cart functionality, and secure checkout.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
-    category: "web",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    liveUrl: "https://example.com/ecommerce",
-    repoUrl: "https://github.com/username/ecommerce",
-    details:
-      "This project was built to demonstrate a complete e-commerce solution with modern technologies. Features include product search, filtering, user accounts, order history, and payment processing.",
-  },
-  {
-    id: "2",
-    title: "Weather Dashboard",
-    description:
-      "Interactive weather application showing forecasts and historical data with beautiful visualizations.",
-    image:
-      "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&q=80",
-    category: "web",
-    technologies: ["JavaScript", "Chart.js", "Weather API", "CSS"],
-    liveUrl: "https://example.com/weather",
-    repoUrl: "https://github.com/username/weather-app",
-  },
-  {
-    id: "3",
-    title: "Task Management App",
-    description:
-      "A productivity tool for organizing tasks with drag-and-drop functionality and team collaboration features.",
-    image:
-      "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=800&q=80",
-    category: "mobile",
-    technologies: ["React Native", "Firebase", "Redux"],
-    liveUrl: "https://example.com/taskapp",
-    repoUrl: "https://github.com/username/task-app",
-  },
-  {
-    id: "4",
-    title: "Fitness Tracker",
-    description:
-      "Mobile application for tracking workouts, nutrition, and progress with personalized recommendations.",
-    image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
-    category: "mobile",
-    technologies: ["Flutter", "Firebase", "Health API"],
-    liveUrl: "https://example.com/fitness",
-    repoUrl: "https://github.com/username/fitness-tracker",
-  },
-  {
-    id: "5",
-    title: "Data Visualization Dashboard",
-    description:
-      "Interactive dashboard for visualizing complex datasets with filtering and export capabilities.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    category: "data",
-    technologies: ["D3.js", "React", "Python", "CSV Processing"],
-    liveUrl: "https://example.com/dataviz",
-    repoUrl: "https://github.com/username/data-dashboard",
-  },
-  {
-    id: "6",
-    title: "Portfolio Website",
-    description:
-      "Personal portfolio website showcasing projects and skills with a modern, responsive design.",
-    image:
-      "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800&q=80",
-    category: "web",
-    technologies: ["React", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "https://example.com/portfolio",
-    repoUrl: "https://github.com/username/portfolio",
-  },
-];
 
 export default ProjectsGallery;
