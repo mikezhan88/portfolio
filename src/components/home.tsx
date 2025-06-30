@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Sun,
@@ -17,7 +17,7 @@ import {
   Crown,
   Key,
 } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { Switch } from "./ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -52,35 +52,35 @@ const Home = () => {
     {
       title: "GTM Analyst",
       company: "Stacked",
-      date: "2025 - Present",
+      date: "January 2025 - June 2025",
       description:
         "Led go-to-market strategy by defining messaging, pricing, and campaign tactics that reduced churn by 20%. Built KPI dashboards, ran A/B tests, and scaled growth through data-driven marketing and strategic partnerships.",
     },
     {
       title: "Software Engineer",
       company: "Blue Modern Advisory",
-      date: "2023 - 2024",
+      date: "June 2023 - January 2025",
       description:
         "Developed and launched a modern, responsive website for a career consulting firm, leveraging React, Tailwind, and WordPress. Managed the backend database and optimized international accessibility, helping attract global clients.",
     },
     {
       title: "Client Relationship Manager",
       company: "Omneky",
-      date: "2020 - 2021",
+      date: "November 2020 - January 2021",
       description:
         "Managed B2B client relationships and led outbound prospecting efforts, leveraging CRM tools and marketing analytics to identify opportunities, personalize outreach, and drive customer engagement.",
     },
     {
       title: "Software Engineer Intern",
       company: "Eliqs",
-      date: "2020 - 2020",
+      date: "June 2020 - September 2020",
       description:
         "Started my professional journey building a responsive website frmo scratch and learning modern development practices. Gained experience in React, JavaScript, GCP, and backend technologies.",
     },
     {
       title: "B.S. Computer Science",
       company: "University of California, Los Angeles (UCLA)",
-      date: "2019 - 2023",
+      date: "September 2019 - June 2023",
       description:
         "Graduated with honors. Focused on software engineering, AI, Machine Learning, algorithms, and data structures. Joined ACM(CS org), DSP(Premier Business Fraternity), & Theta Chi(Social Fraternity), building a strong double foundation in computer science and business.",
     },
@@ -142,6 +142,24 @@ const Home = () => {
       technologies: ["React", "HTML/CSS", "Framer Motion", "Tailwind", "TypeScript"],
       liveUrl: "https://www.mike-zhan.com",
       repoUrl: "https://github.com/mikezhan88/portfolio",
+    },
+    {
+      id: "7",
+      title: "Voluntr",
+      description: "full-stack social impact app that connects volunteers with meaningful opportunities, featuring event discovery, social networking, and achievement tracking to gamify and encourage community service participation.",
+      images: ["/v10.jpg", "/v1.jpg", "/v2.jpg", "/v3.jpg", "/v4.jpg", "/v5.jpg", "/v6.jpg", "/v7.jpg", "/v8.jpg", "/v9.jpg"], // You can replace this with actual project images
+      category: "mobile",
+      technologies: ["React Native", "TypeScript", "Supabase", "Expo", "Tailwind CSS", "Google Cloud"],
+      details: "Full-stack e-commerce platform featuring product catalog, shopping cart, user authentication, payment processing with Stripe, and admin dashboard for inventory management.",
+    },
+    {
+      id: "8",
+      title: "AI Job Board",
+      description: "A modern, AI-powered job board web application built with Next.js 15, featuring intelligent job matching, automated applicant ranking, and comprehensive employer tools.",
+      images: ["/a1.png", "a2.png", "a3.png", "a4.png", "a5.png", "a6.ong", "a7.png"], // You can replace this with actual project images
+      category: "web",
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "MDX Editor", "Drizzle ORM", "Inngest", "Clerk", "Uploadthing", "Anthropic Claude AI", "Google Gemini AI"],
+      repoUrl: "http://github.com/mikezhan88/ai-job-board",
     },
   ];
 
@@ -223,11 +241,11 @@ const Home = () => {
             className="max-w-3xl mx-auto text-center"
           >
             <div className="flex justify-center mb-6">
-              <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20">
+              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-primary/20">
                 <img
-                  src="/pfp.jpeg"
+                  src="/pfp3.jpg"
                   alt="Profile Picture"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[center_top] scale-150 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -384,7 +402,7 @@ I thrive at the intersection of tech and strategy — combining hands-on coding 
                       <div className="flex-shrink-0 w-2 h-2 bg-primary rounded-full mt-2"></div>
                       <div>
                         <h4 className="font-medium text-foreground mb-1">
-                          Bartended Large Creator Event
+                          Bartender and Barista on the side
                         </h4>
                       </div>
                     </div>
@@ -494,8 +512,8 @@ I thrive at the intersection of tech and strategy — combining hands-on coding 
               <CardContent>
                 <div className="grid grid-cols-[2.5rem_1fr] items-start">
                   {timeline.map((item, idx) => (
-                    <React.Fragment key={item.title + item.company}>
-                      <div className="flex flex-col items-center h-full relative">
+                    <>
+                      <div className="flex flex-col items-center h-full relative" key={`dot-${item.title + item.company}`}> 
                         {/* Top line (not for first item) */}
                         {idx !== 0 && (
                           <div className="w-1 bg-primary/30 -mb-1" style={{ height: '1rem' }} />
@@ -507,7 +525,7 @@ I thrive at the intersection of tech and strategy — combining hands-on coding 
                           <div className="flex-1 w-1 bg-primary/30 -mt-1" />
                         )}
                       </div>
-                      <div className={`pb-10 ${idx === 0 ? 'pt-0' : 'pt-1'}`}>
+                      <div className={`pb-10 ${idx === 0 ? 'pt-0' : 'pt-1'}`} key={`content-${item.title + item.company}`}>
                         <div className="flex items-center justify-between mb-1">
                           <h4 className="font-semibold text-foreground text-xl md:text-2xl">
                             {item.title}
@@ -521,7 +539,7 @@ I thrive at the intersection of tech and strategy — combining hands-on coding 
                         <p className="text-muted-foreground font-medium mb-1">{item.company}</p>
                         <p className="text-muted-foreground">{item.description}</p>
                       </div>
-                    </React.Fragment>
+                    </>
                   ))}
                 </div>
               </CardContent>

@@ -22,6 +22,7 @@ const defaultCategories: SkillCategory[] = [
     name: "Frontend",
     skills: [
       { name: "React JS" },
+      { name: "Next JS" },
       { name: "React Native" },
       { name: "Expo Go" },
       { name: "JavaScript" },
@@ -46,6 +47,7 @@ const defaultCategories: SkillCategory[] = [
       { name: "Java" },
       { name: "C#" },
       { name: "Python" },
+      { name: "AI Integration" },
     ],
   },
   {
@@ -56,6 +58,7 @@ const defaultCategories: SkillCategory[] = [
       { name: "SQL (Azure/Cloud)" },
       { name: "Supabase" },
       { name: "DBT" },
+      { name: "Drizzle" },
     ],
   },
   {
@@ -69,6 +72,7 @@ const defaultCategories: SkillCategory[] = [
       { name: "CI/CD" },
       { name: "Git" },
       { name: "Jest" },
+      { name: "Inngest" },
     ],
   },
   {
@@ -83,6 +87,8 @@ const defaultCategories: SkillCategory[] = [
       { name: "Canva" },
       { name: "Framer" },
       { name: "Capcut" },
+      { name: "Clerk" },
+      { name: "Stripe" },
     ],
   },
 ];
