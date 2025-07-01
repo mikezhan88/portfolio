@@ -29,6 +29,7 @@ interface ProjectModalProps {
     technologies: string[];
     liveUrl?: string;
     repoUrl?: string;
+    demoUrl?: string;
   };
 }
 
@@ -111,6 +112,18 @@ const ProjectModal = ({
                 >
                   <ExternalLink className="mr-2 h-4 w-4" />
                   Live Site
+                </a>
+              </Button>
+            )}
+            {project.demoUrl && (
+              <Button variant="outline" asChild>
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Demo Video
                 </a>
               </Button>
             )}

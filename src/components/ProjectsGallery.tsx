@@ -14,6 +14,7 @@ interface Project {
   liveUrl?: string;
   repoUrl?: string;
   details?: string;
+  coverPhoto?: string;
 }
 
 interface ProjectsGalleryProps {
@@ -66,9 +67,12 @@ const ProjectsGallery = ({ projects }: ProjectsGalleryProps) => {
             >
               <div className="aspect-video relative overflow-hidden">
                 <img
-                  src={project.images[0]}
+                  src={project.coverPhoto ? project.coverPhoto : project.images[0]}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  className={
+                    "w-full h-full transition-transform duration-300 hover:scale-105 " +
+                    (project.title === "Voluntr" ? "object-contain bg-white" : "object-cover")
+                  }
                 />
               </div>
               <CardContent className="p-5">
@@ -109,7 +113,12 @@ const ProjectsGallery = ({ projects }: ProjectsGalleryProps) => {
       {/* Project modal */}
       {selectedProject && (
         <ProjectModal
-          project={selectedProject}
+          project={{
+            ...selectedProject,
+            images: selectedProject.coverPhoto
+              ? selectedProject.images.filter(img => img !== selectedProject.coverPhoto)
+              : selectedProject.images,
+          }}
           isOpen={!!selectedProject}
           onClose={() => setSelectedProject(null)}
         />

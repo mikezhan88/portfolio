@@ -114,6 +114,7 @@ const Home = () => {
       category: "mobile",
       technologies: ["React Native", "Google Cloud", "Vertex AI", "Supabase", "Expo"],
       repoUrl: "https://github.com/mikezhan88/LiftID",
+      demoUrl: "https://www.youtube.com/shorts/J6G87lAIevc",
     },
     {
       id: "4",
@@ -147,10 +148,12 @@ const Home = () => {
       id: "7",
       title: "Voluntr",
       description: "full-stack social impact app that connects volunteers with meaningful opportunities, featuring event discovery, social networking, and achievement tracking to gamify and encourage community service participation.",
-      images: ["/v10.jpg", "/v1.jpg", "/v2.jpg", "/v3.jpg", "/v4.jpg", "/v5.jpg", "/v6.jpg", "/v7.jpg", "/v8.jpg", "/v9.jpg"], // You can replace this with actual project images
+      coverPhoto: "/vcp.jpg",
+      images: [ "/v1.jpg", "/v2.jpg", "/v3.jpg", "/v4.jpg", "/v5.jpg", "/v6.jpg", "/v7.jpg", "/v8.jpg", "/v9.jpg"], // You can replace this with actual project images
       category: "mobile",
       technologies: ["React Native", "TypeScript", "Supabase", "Expo", "Tailwind CSS", "Google Cloud"],
       details: "Full-stack e-commerce platform featuring product catalog, shopping cart, user authentication, payment processing with Stripe, and admin dashboard for inventory management.",
+      demoUrl: "https://www.youtube.com/shorts/QcLcuYFXQx4",
     },
     {
       id: "8",
@@ -160,6 +163,7 @@ const Home = () => {
       category: "web",
       technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "MDX Editor", "Drizzle ORM", "Inngest", "Clerk", "Uploadthing", "Anthropic Claude AI", "Google Gemini AI"],
       repoUrl: "http://github.com/mikezhan88/ai-job-board",
+      demoUrl: "https://www.youtube.com/watch?v=Kq45KaiG-U0&t=2s&ab_channel=MichaelZhan",
     },
   ];
 
