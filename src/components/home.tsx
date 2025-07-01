@@ -110,6 +110,7 @@ const Home = () => {
       id: "3",
       title: "LiftID",
       description: "Fitness App for helping users quickly understand different gym machine use using AI image recognition.",
+      coverPhoto: "/lcp.jpg",
       images: ["/l1.PNG", "/l2.PNG", "/l3.PNG", "/l4.PNG", "/l5.PNG", "/l6.PNG"],
       category: "mobile",
       technologies: ["React Native", "Google Cloud", "Vertex AI", "Supabase", "Expo"],

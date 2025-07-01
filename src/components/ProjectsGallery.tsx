@@ -71,7 +71,11 @@ const ProjectsGallery = ({ projects }: ProjectsGalleryProps) => {
                   alt={project.title}
                   className={
                     "w-full h-full transition-transform duration-300 hover:scale-105 " +
-                    (project.title === "Voluntr" ? "object-contain bg-white" : "object-cover")
+                    (project.title === "Voluntr"
+                      ? "object-contain bg-white"
+                      : project.title === "LiftID"
+                        ? "object-contain bg-[#f5f6fa]"
+                        : "object-cover")
                   }
                 />
               </div>
