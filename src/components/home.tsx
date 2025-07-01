@@ -160,7 +160,7 @@ const Home = () => {
       id: "8",
       title: "AI Job Board",
       description: "A modern, AI-powered job board web application built with Next.js 15, featuring intelligent job matching, automated applicant ranking, and comprehensive employer tools.",
-      images: ["/a1.png", "a2.png", "a3.png", "a4.png", "a5.png", "a6.ong", "a7.png"], // You can replace this with actual project images
+      images: ["/a1.png", "a2.png", "a3.png", "a4.png", "a5.png", "/a6.png", "a7.png"],
       category: "web",
       technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "MDX Editor", "Drizzle ORM", "Inngest", "Clerk", "Uploadthing", "Anthropic Claude AI", "Google Gemini AI"],
       repoUrl: "http://github.com/mikezhan88/ai-job-board",
