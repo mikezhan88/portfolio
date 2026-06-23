@@ -33,7 +33,7 @@ export const experience: Experience[] = [
   {
     company: "aimnow.ai",
     role: "Software Engineer",
-    period: "2025 — Present",
+    period: "May 2026 — Present",
     current: true,
     blurb:
       "Building voice-AI agents end to end — integrating TTS, STT, and LLM providers and models, shipping dashboard UI/UX and new features, and handling backend work in Postgres.",
@@ -42,28 +42,19 @@ export const experience: Experience[] = [
   {
     company: "Tide Rock",
     role: "Software Engineer",
-    period: "2025",
+    period: "Aug 2025 — May 2026",
     location: "San Diego, CA",
     blurb:
       "Built and deployed full-stack MVPs (AWS, Snowflake, TypeScript, Python) for live client and investor demos. Stood up CI/CD and scalable deploys, engineered data pipelines into Snowflake, and shipped 10+ authenticated REST endpoints.",
     stack: ["AWS", "Snowflake", "TypeScript", "Python", "CI/CD"],
   },
   {
-    company: "Stacked",
-    role: "GTM Engineer",
-    period: "Jan — Jun 2025",
-    location: "Los Angeles, CA",
-    blurb:
-      "Owned messaging, pricing, and positioning that cut churn 20%. Ran data-driven campaigns and A/B tests that grew social following 150%, and built a KPI dashboard for outreach performance.",
-    stack: ["GTM", "A/B testing", "Analytics", "Dashboards"],
-  },
-  {
     company: "Blue Modern Advisory",
-    role: "Software Engineer",
-    period: "Jun 2023 — Jan 2025",
+    role: "GTM Engineer",
+    period: "2023 — Aug 2025",
     location: "Los Angeles, CA",
     blurb:
-      "Built the firm's site (React, Tailwind, Framer) and prototyped GTM AI automation with AWS Bedrock and Lambda. Designed a Supabase backend and AI-driven reporting that cut manual effort 50%.",
+      "Shipped GTM AI automation tooling (AWS Bedrock, Lambda) and AI-driven reporting that cut manual effort 50%, and built the firm's site (React, Tailwind, Framer) on a Supabase backend.",
     stack: ["React", "Tailwind", "AWS Bedrock", "Lambda", "Supabase"],
   },
 ];
