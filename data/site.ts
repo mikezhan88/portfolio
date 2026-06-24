@@ -236,18 +236,19 @@ export const caseStudies: CaseStudy[] = [
       {
         n: "02",
         title: "What I built",
-        body: "I built each MVP end to end, front end through API, then stood up the deployment and data pipelines behind it so it could run reliably for a live demo. Along the way I delivered more than ten authenticated API endpoints.",
+        body: "I built each MVP end to end, front end through API, then stood up the deployment and data pipelines behind it so it could run reliably for a live demo. Along the way I delivered more than ten authenticated API endpoints. The ones that showed promise I kept iterating on, taking a product from zero to one and then from one to a hundred.",
       },
       {
         n: "03",
         title: "The outcome",
-        body: "Each build shipped in time for its demo and held up in front of a live audience. That let the team judge an idea on a working product instead of a pitch deck.",
+        body: "Each build shipped in time for its demo and held up in front of a live audience. The ones that proved out went on to deliver real value to the portfolio companies, producing revenue or cutting costs, and several were solid enough to raise on.",
       },
     ],
     contributions: [
       "Built and launched full-stack MVPs for live client and investor demos",
       "Delivered 10+ authenticated API endpoints",
       "Stood up the deployment and data pipelines behind each build",
+      "Iterated on the builds that proved out, taking products from zero to one and one to a hundred",
     ],
     stack: ["AWS", "Snowflake", "TypeScript", "Python", "CI/CD"],
   },
