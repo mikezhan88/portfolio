@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { profile, contactFormEndpoint } from "@/data/site";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -20,24 +19,16 @@ export function ContactForm() {
     // honeypot — bots fill hidden fields
     if (((data.get("_gotcha") as string) || "").length > 0) return;
 
-    // Until Formspree is configured, fall back to the visitor's email client.
-    if (!contactFormEndpoint) {
-      const name = (data.get("name") as string) || "";
-      const email = (data.get("email") as string) || "";
-      const message = (data.get("message") as string) || "";
-      const body = encodeURIComponent(`${message}\n\nFrom ${name} (${email})`);
-      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(
-        "Hello from your site"
-      )}&body=${body}`;
-      return;
-    }
-
     setStatus("sending");
     try {
-      const res = await fetch(contactFormEndpoint, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
       });
       if (res.ok) {
         setStatus("ok");

@@ -19,11 +19,6 @@ export const profile = {
   },
 };
 
-// Paste your Formspree endpoint here (formspree.io -> New form), e.g.
-// "https://formspree.io/f/abcdwxyz". Until it's set, the contact form falls
-// back to opening the visitor's email client.
-export const contactFormEndpoint = "";
-
 export type Experience = {
   company: string;
   role: string;
