@@ -36,7 +36,6 @@ export function InFocus() {
         });
 
         tl.to(".focus-bar", { scaleX: 1, ease: "none" }, 0);
-        tl.to(".focus-visual", { scale: 1.12, ease: "none" }, 0);
 
         stepsEls.forEach((el, i) => {
           if (i === 0) return;
