@@ -22,12 +22,11 @@ export function SplitReveal({
 
       const split = new SplitText(el, {
         type: "lines",
-        mask: "lines",
         linesClass: "split-line",
       });
 
       gsap.from(split.lines, {
-        yPercent: 120,
+        yPercent: 55,
         opacity: 0,
         duration: 1,
         stagger: 0.12,

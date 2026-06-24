@@ -8,7 +8,7 @@ export const profile = {
   currentCompany: "aimnow.ai",
   headline: ["I build products and bring them to", "market."],
   blurb:
-    "Full-stack engineer building voice-AI agents at aimnow.ai — working across C++, Python, JavaScript, and SQL. I've shipped products from MVP to go-to-market. Off the clock, I shoot photo and video.",
+    "Full-stack engineer and go-to-market strategist — I take products from first commit to first customers, building the AI systems and the growth engine behind them. End-to-end, fast, and obsessed with craft. Off the clock, I'm behind the camera.",
   email: "mikezhan8@gmail.com",
   resume: "/Michael-Zhan-Resume.pdf",
   available: "Open to new opportunities & freelance",
@@ -54,8 +54,8 @@ export const experience: Experience[] = [
     period: "2023 — Aug 2025",
     location: "Los Angeles, CA",
     blurb:
-      "Shipped GTM AI automation tooling (AWS Bedrock, Lambda) and AI-driven reporting that cut manual effort 50%, and built the firm's site (React, Tailwind, Framer) on a Supabase backend.",
-    stack: ["React", "Tailwind", "AWS Bedrock", "Lambda", "Supabase"],
+      "Built automated AI go-to-market systems for clients with Clay, n8n, and Claude — lead signals and triggers, TAM mapping, and personalized email campaigns — plus AI-driven reporting that cut manual effort 50%. Also shipped the firm's site on React, Tailwind, and Framer.",
+    stack: ["Clay", "n8n", "Claude", "AWS Bedrock", "Supabase", "React"],
   },
 ];
 

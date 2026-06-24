@@ -12,7 +12,7 @@ export function Hero() {
           {profile.roles.join("  ·  ")}
         </p>
 
-        <SplitReveal className="max-w-[15ch] font-display text-[clamp(2.6rem,7vw,5.5rem)] font-medium leading-[1.04] tracking-tight">
+        <SplitReveal className="max-w-[15ch] font-display text-[clamp(2.6rem,7vw,5.5rem)] font-medium leading-[1.1] tracking-tight pb-[0.12em]">
           {profile.headline[0]}{" "}
           <em className="italic text-accent">{profile.headline[1]}</em>
         </SplitReveal>
