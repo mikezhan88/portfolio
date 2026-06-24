@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
       {
         n: "03",
         title: "The outcome",
-        body: "The agents handle live conversations in production. [Add a concrete result once cleared: response latency, call volume, or a specific capability shipped.]",
+        body: "The agents handle live conversations in production. The work has stayed focused on keeping responses quick enough that the conversation feels natural, and the backend steady as more people use it.",
       },
     ],
     contributions: [
@@ -241,7 +241,7 @@ export const caseStudies: CaseStudy[] = [
       {
         n: "03",
         title: "The outcome",
-        body: "Each MVP shipped in time for its demo. [Add outcomes once cleared: how many moved past the demo stage, what they unlocked, or time saved.]",
+        body: "Each build shipped in time for its demo and held up in front of a live audience. That let the team judge an idea on a working product instead of a pitch deck.",
       },
     ],
     contributions: [
