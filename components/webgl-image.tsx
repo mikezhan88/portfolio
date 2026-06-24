@@ -102,10 +102,14 @@ export function WebglImage({
         img.crossOrigin = "anonymous";
 
         const resize = () => {
-          const r = wrap.getBoundingClientRect();
-          if (r.width === 0 || r.height === 0) return;
-          renderer.setSize(r.width, r.height);
-          const planeAspect = r.width / r.height;
+          // offsetWidth/Height = layout size, unaffected by any CSS scale on an
+          // ancestor (e.g. the Ken-Burns zoom wrapper), so the canvas buffer
+          // stays sized to the frame and the zoom just magnifies it.
+          const w = wrap.offsetWidth;
+          const h = wrap.offsetHeight;
+          if (w === 0 || h === 0) return;
+          renderer.setSize(w, h);
+          const planeAspect = w / h;
           const imgAspect = (img.naturalWidth || 16) / (img.naturalHeight || 10);
           if (imgAspect > planeAspect) {
             program.uniforms.uCover.value = [planeAspect / imgAspect, 1];

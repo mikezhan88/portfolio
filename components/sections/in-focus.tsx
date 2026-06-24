@@ -36,6 +36,7 @@ export function InFocus() {
         });
 
         tl.to(".focus-bar", { scaleX: 1, ease: "none" }, 0);
+        tl.to(".focus-zoom", { scale: 1.12, ease: "none" }, 0);
 
         stepsEls.forEach((el, i) => {
           if (i === 0) return;
@@ -83,7 +84,7 @@ export function InFocus() {
             </div>
             <div className="flex-1">
               <div className="focus-visual aspect-[4/3] overflow-hidden rounded-2xl border border-line/10">
-                <WebglImage src="/a1.png" alt="AI Job Board" className="h-full w-full" />
+                <WebglImage src="/a1.png" alt="AI Job Board" className="focus-zoom h-full w-full" />
               </div>
             </div>
           </div>
