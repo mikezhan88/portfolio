@@ -30,7 +30,7 @@ export function SelectedWork() {
 
         <WorkList projects={featured} />
 
-        <p className="mt-4 font-mono text-[11px] text-muted/50">
+        <p className="mt-4 hidden font-mono text-[11px] text-muted/50 md:block">
           Hover a project to preview.
         </p>
       </div>
