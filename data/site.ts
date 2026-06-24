@@ -92,7 +92,7 @@ export const projects: Project[] = [
     featured: true,
     summary:
       "A platform for finding and posting local golf tournaments, built for a client. Players search by location and format, organizers post events, and the community connects through discussions.",
-    stack: ["Next.js", "TypeScript"],
+    stack: ["Next.js", "TypeScript", "Supabase", "Vercel"],
     image: "/findgolfgames.png",
     live: "https://www.findgolfgames.com",
   },
@@ -165,12 +165,12 @@ export const projects: Project[] = [
 
 export const skills = [
   { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "C++", "C", "Go", "Java"] },
-  { group: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind CSS", "Framer Motion"] },
-  { group: "Backend & APIs", items: ["Node.js", "Flask", "Django", "REST APIs"] },
-  { group: "Databases & data", items: ["PostgreSQL", "MongoDB", "Supabase", "Snowflake", "dbt"] },
-  { group: "AI & ML", items: ["LLMs", "Claude", "Gemini", "Vertex AI", "TTS / STT"] },
-  { group: "Cloud & DevOps", items: ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "Jest"] },
-  { group: "GTM & automation", items: ["Clay", "n8n", "Marketing automation", "TAM mapping", "A/B testing", "Google Analytics"] },
+  { group: "Frontend", items: ["React", "Next.js", "React Native", "Expo", "Tailwind CSS", "Framer Motion"] },
+  { group: "Backend", items: ["Node.js", "Flask", "Django"] },
+  { group: "Databases & data", items: ["PostgreSQL", "Supabase", "MongoDB", "Drizzle ORM", "Snowflake", "dbt"] },
+  { group: "AI", items: ["Claude", "Gemini", "Vertex AI"] },
+  { group: "Cloud & DevOps", items: ["AWS", "GCP", "Vercel", "Docker", "Kubernetes", "Jest"] },
+  { group: "GTM & automation", items: ["Clay", "n8n", "Google Analytics"] },
   { group: "Design & content", items: ["Figma", "Framer", "Canva", "CapCut"] },
 ];
 
