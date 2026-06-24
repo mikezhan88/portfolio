@@ -22,9 +22,20 @@ export function Providers({ children }: { children: ReactNode }) {
     const lenis = lenisRef.current?.lenis;
     if (lenis) lenis.on("scroll", ScrollTrigger.update);
 
+    // Recompute pinned/scroll positions once fonts + images settle, so the
+    // pinned section doesn't break on the way back up.
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    const t1 = window.setTimeout(refresh, 500);
+    const t2 = window.setTimeout(refresh, 1500);
+
     return () => {
       gsap.ticker.remove(update);
       lenis?.off("scroll", ScrollTrigger.update);
+      window.removeEventListener("load", refresh);
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
     };
   }, [reduce]);
 
