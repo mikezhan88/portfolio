@@ -19,6 +19,11 @@ export const profile = {
   },
 };
 
+// Paste your Formspree endpoint here (formspree.io -> New form), e.g.
+// "https://formspree.io/f/abcdwxyz". Until it's set, the contact form falls
+// back to opening the visitor's email client.
+export const contactFormEndpoint = "";
+
 export type Experience = {
   company: string;
   role: string;
@@ -80,6 +85,17 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "findgolfgames",
+    title: "FindGolfGames",
+    year: "2026",
+    featured: true,
+    summary:
+      "A platform for finding and posting local golf tournaments, built for a client. Players search by location and format, organizers post events, and the community connects through discussions.",
+    stack: ["Next.js", "TypeScript"],
+    image: "/findgolfgames.png",
+    live: "https://www.findgolfgames.com",
+  },
   {
     slug: "ai-job-board",
     title: "AI Job Board",
@@ -148,12 +164,14 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
-  { group: "Languages", items: ["Python", "C++", "C", "JavaScript", "TypeScript", "SQL", "Go", "Java"] },
-  { group: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind", "Framer Motion"] },
-  { group: "Backend", items: ["Node.js", "Flask", "Django", "PostgreSQL", "MongoDB", "Supabase"] },
-  { group: "AI / ML", items: ["LLMs", "TTS / STT", "Claude", "Gemini", "Vertex AI", "AI integration"] },
-  { group: "Infra & Data", items: ["AWS Lambda", "GCP", "Docker", "Kubernetes", "CI/CD", "Snowflake", "dbt"] },
-  { group: "GTM & automation", items: ["Clay", "n8n", "Marketing automation", "TAM mapping", "A/B testing", "Analytics"] },
+  { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "C++", "C", "Go", "Java"] },
+  { group: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind CSS", "Framer Motion"] },
+  { group: "Backend & APIs", items: ["Node.js", "Flask", "Django", "REST APIs"] },
+  { group: "Databases & data", items: ["PostgreSQL", "MongoDB", "Supabase", "Snowflake", "dbt"] },
+  { group: "AI & ML", items: ["LLMs", "Claude", "Gemini", "Vertex AI", "TTS / STT"] },
+  { group: "Cloud & DevOps", items: ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "Jest"] },
+  { group: "GTM & automation", items: ["Clay", "n8n", "Marketing automation", "TAM mapping", "A/B testing", "Google Analytics"] },
+  { group: "Design & content", items: ["Figma", "Framer", "Canva", "CapCut"] },
 ];
 
 export const nav = [
