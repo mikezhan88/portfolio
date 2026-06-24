@@ -1,4 +1,6 @@
-import { experience, skills, education } from "@/data/site";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { experience, skills, education, caseStudies } from "@/data/site";
 import { Reveal } from "@/components/reveal";
 
 export function About() {
@@ -20,7 +22,9 @@ export function About() {
               Experience
             </p>
             <div className="flex flex-col">
-              {experience.map((job, i) => (
+              {experience.map((job, i) => {
+                const study = caseStudies.find((c) => c.company === job.company);
+                return (
                 <Reveal key={job.company + job.period} delay={i * 0.05}>
                   <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-line/10 py-6">
                     <div>
@@ -42,13 +46,23 @@ export function About() {
                           <span key={s}>{s}</span>
                         ))}
                       </div>
+                      {study && (
+                        <Link
+                          href={`/work/${study.slug}`}
+                          className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] text-accent transition-opacity hover:opacity-70"
+                        >
+                          Read the case study
+                          <ArrowUpRight size={13} />
+                        </Link>
+                      )}
                     </div>
                     <span className="whitespace-nowrap font-mono text-[11px] text-muted">
                       {job.period}
                     </span>
                   </div>
                 </Reveal>
-              ))}
+                );
+              })}
               <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-line/10 py-6">
                 <div>
                   <h3 className="font-display text-lg font-medium">{education.degree}</h3>

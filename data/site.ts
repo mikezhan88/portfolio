@@ -158,6 +158,101 @@ export const projects: Project[] = [
   },
 ];
 
+export type CaseStudy = {
+  slug: string;
+  // links back to the matching experience entry by company name
+  company: string;
+  role: string;
+  period: string;
+  // mono eyebrow tag, e.g. "Current role · Under NDA"
+  tag: string;
+  // display headline; accent is rendered in italic at the end
+  title: string;
+  accent: string;
+  // lede paragraph
+  summary: string;
+  nda?: boolean;
+  sections: { n: string; title: string; body: string }[];
+  contributions: string[];
+  stack: string[];
+};
+
+// Anonymized case studies for NDA work. No client names, no proprietary
+// detail, no real screenshots. Metrics left as bracketed placeholders until
+// cleared, since nothing here is invented.
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: "voice-ai-agents",
+    company: "aimnow.ai",
+    role: "Software Engineer",
+    period: "May 2026 - Present",
+    tag: "Current role · Under NDA",
+    title: "Voice AI agents, built from the",
+    accent: "ground up.",
+    summary:
+      "I work on voice AI agents that hold real, spoken conversations. The work runs from the models the agents are built on to the backend that keeps them responsive under load. Details here are kept general to respect an NDA.",
+    nda: true,
+    sections: [
+      {
+        n: "01",
+        title: "The problem",
+        body: "A voice agent has to listen, think, and reply fast enough that the conversation still feels natural. That means stitching speech recognition, a language model, and speech synthesis into one path without adding the kind of delay a caller would notice.",
+      },
+      {
+        n: "02",
+        title: "What I do",
+        body: "I integrate the speech and language models the agents run on, then build product features on top of them. A lot of the day to day is keeping the path from audio in to audio out tight, and making the backend hold up as traffic grows.",
+      },
+      {
+        n: "03",
+        title: "The outcome",
+        body: "The agents handle live conversations in production. [Add a concrete result once cleared: response latency, call volume, or a specific capability shipped.]",
+      },
+    ],
+    contributions: [
+      "Integrate speech-to-text, language, and text-to-speech models into one real-time pipeline",
+      "Ship new agent capabilities into the product",
+      "Keep the backend fast and reliable as usage scales",
+    ],
+    stack: ["C++", "Python", "JavaScript", "SQL", "Postgres", "LLMs"],
+  },
+  {
+    slug: "portfolio-mvps",
+    company: "Tide Rock",
+    role: "Software Engineer",
+    period: "Aug 2025 - May 2026",
+    tag: "Under NDA",
+    title: "Turning ideas into demo-ready",
+    accent: "products.",
+    summary:
+      "I built and launched full-stack MVPs for a private-equity firm, the kind used to test an idea in front of clients and investors before committing to it. Company names and specifics are left out under NDA.",
+    nda: true,
+    sections: [
+      {
+        n: "01",
+        title: "The problem",
+        body: "The firm needed working products fast, not slide decks. Each one had to be solid enough to put in front of clients and investors on a fixed date, then ready to build on if the idea got traction.",
+      },
+      {
+        n: "02",
+        title: "What I built",
+        body: "I built each MVP end to end, front end through API, then stood up the deployment and data pipelines behind it so it could run reliably for a live demo. Along the way I delivered more than ten authenticated API endpoints.",
+      },
+      {
+        n: "03",
+        title: "The outcome",
+        body: "Each MVP shipped in time for its demo. [Add outcomes once cleared: how many moved past the demo stage, what they unlocked, or time saved.]",
+      },
+    ],
+    contributions: [
+      "Built and launched full-stack MVPs for live client and investor demos",
+      "Delivered 10+ authenticated API endpoints",
+      "Stood up the deployment and data pipelines behind each build",
+    ],
+    stack: ["AWS", "Snowflake", "TypeScript", "Python", "CI/CD"],
+  },
+];
+
 export const skills = [
   { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "C++", "C", "Go", "Java"] },
   { group: "Frontend", items: ["React", "Next.js", "React Native", "Expo", "Tailwind CSS", "Framer Motion"] },
