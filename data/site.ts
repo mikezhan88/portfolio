@@ -8,7 +8,7 @@ export const profile = {
   currentCompany: "aimnow.ai",
   headline: ["I build products and bring them to", "market."],
   blurb:
-    "Full-stack engineer and go-to-market strategist — I take products from first commit to first customers, building the AI systems and the growth engine behind them. End-to-end, fast, and obsessed with craft. Off the clock, I'm behind the camera.",
+    "I'm a full-stack engineer and go-to-market strategist who likes owning the whole path, from first commit to first customer. I build the product and the system that takes it to market. Off the clock, I'm usually behind a camera.",
   email: "mikezhan8@gmail.com",
   resume: "/Michael-Zhan-Resume.pdf",
   available: "Open to new opportunities & freelance",
@@ -33,28 +33,28 @@ export const experience: Experience[] = [
   {
     company: "aimnow.ai",
     role: "Software Engineer",
-    period: "May 2026 — Present",
+    period: "May 2026 - Present",
     current: true,
     blurb:
-      "Building voice-AI agents end to end — integrating TTS, STT, and LLM providers and models, shipping dashboard UI/UX and new features, and handling backend work in Postgres.",
+      "Building voice AI agents from the ground up. I integrate the speech and language models they run on, ship new capabilities into the product, and keep the backend fast and reliable as it scales.",
     stack: ["C++", "Python", "JavaScript", "SQL", "Postgres", "LLMs"],
   },
   {
     company: "Tide Rock",
     role: "Software Engineer",
-    period: "Aug 2025 — May 2026",
+    period: "Aug 2025 - May 2026",
     location: "San Diego, CA",
     blurb:
-      "Built and deployed full-stack MVPs (AWS, Snowflake, TypeScript, Python) for live client and investor demos. Stood up CI/CD and scalable deploys, engineered data pipelines into Snowflake, and shipped 10+ authenticated REST endpoints.",
+      "Built and launched full-stack MVPs for live client and investor demos, then stood up the deployment and data pipelines behind them. Delivered 10+ authenticated API endpoints in the process.",
     stack: ["AWS", "Snowflake", "TypeScript", "Python", "CI/CD"],
   },
   {
     company: "Blue Modern Advisory",
     role: "GTM Engineer",
-    period: "2023 — Aug 2025",
+    period: "2023 - Aug 2025",
     location: "Los Angeles, CA",
     blurb:
-      "Built automated AI go-to-market systems for clients with Clay, n8n, and Claude — lead signals and triggers, TAM mapping, and personalized email campaigns — plus AI-driven reporting that cut manual effort 50%. Also shipped the firm's site on React, Tailwind, and Framer.",
+      "Built automated go-to-market systems for clients, from lead signals and triggers to TAM mapping and personalized outreach campaigns. Added AI reporting that cut manual work in half, and shipped the firm's marketing site.",
     stack: ["Clay", "n8n", "Claude", "AWS Bedrock", "Supabase", "React"],
   },
 ];
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     year: "2025",
     featured: true,
     summary:
-      "A social-impact app connecting volunteers with opportunities — event discovery, social networking, and gamified achievement tracking.",
+      "A social-impact app that connects volunteers with causes through event discovery, social networking, and gamified achievement tracking.",
     stack: ["React Native", "Supabase", "Expo", "TypeScript"],
     image: "/vcp.jpg",
     demo: "https://www.youtube.com/shorts/QcLcuYFXQx4",
@@ -153,6 +153,7 @@ export const skills = [
   { group: "Backend", items: ["Node.js", "Flask", "Django", "PostgreSQL", "MongoDB", "Supabase"] },
   { group: "AI / ML", items: ["LLMs", "TTS / STT", "Claude", "Gemini", "Vertex AI", "AI integration"] },
   { group: "Infra & Data", items: ["AWS Lambda", "GCP", "Docker", "Kubernetes", "CI/CD", "Snowflake", "dbt"] },
+  { group: "GTM & automation", items: ["Clay", "n8n", "Marketing automation", "TAM mapping", "A/B testing", "Analytics"] },
 ];
 
 export const nav = [

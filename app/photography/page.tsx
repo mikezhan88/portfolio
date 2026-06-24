@@ -16,7 +16,7 @@ export default function PhotographyPage() {
     <section className="px-6 pb-28 pt-32">
       <div className="mx-auto max-w-6xl">
         <p className="mb-3 font-mono text-[11px] uppercase tracking-label text-accent">
-          Off the clock — photo &amp; video
+          Off the clock · photo &amp; video
         </p>
         <h1 className="font-display text-4xl font-medium sm:text-6xl">
           Through the <em className="italic text-accent">lens</em>.
@@ -69,7 +69,7 @@ function EmptyState() {
         ))}
       </div>
       <p className="mt-4 font-mono text-[11px] text-muted/50">
-        Gallery coming soon — drop JPEGs into <code>/public/photos</code>.
+        Gallery coming soon. Drop JPEGs into <code>/public/photos</code>.
       </p>
     </>
   );

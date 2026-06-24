@@ -10,7 +10,7 @@ export function About() {
             About
           </p>
           <h2 className="max-w-3xl font-display text-3xl font-medium leading-snug sm:text-4xl">
-            An engineer who ships across the stack — and knows how to take it to market.
+            I build the product, then help it find its market.
           </h2>
         </Reveal>
 

@@ -8,7 +8,7 @@ import { WebglImage } from "@/components/webgl-image";
 
 const STEPS = [
   { n: "01", t: "The problem", d: "Hiring teams drown in unranked applicants and one-size-fits-all job posts." },
-  { n: "02", t: "What I built", d: "An AI job board — semantic matching, automated applicant ranking, and a full employer toolkit (Next.js, Claude, Gemini, Drizzle, Clerk, Inngest)." },
+  { n: "02", t: "What I built", d: "An AI job board with semantic matching, automated applicant ranking, and a full set of employer tools." },
   { n: "03", t: "The outcome", d: "Faster shortlisting, higher-signal matches, and a hiring funnel that runs itself." },
 ];
 
@@ -60,7 +60,7 @@ export function InFocus() {
           <div className="mx-auto flex w-full max-w-6xl items-center gap-14 px-6">
             <div className="relative flex-1">
               <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
-                In focus — AI Job Board
+                In focus · AI Job Board
               </p>
               <div className="relative h-44">
                 {STEPS.map((s, i) => (
@@ -94,7 +94,7 @@ export function InFocus() {
       {/* Mobile, or reduced-motion: static */}
       <section className={`border-t border-line/10 px-6 py-20 ${reduce ? "block" : "md:hidden"}`}>
         <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
-          In focus — AI Job Board
+          In focus · AI Job Board
         </p>
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line/10">
           <Image src="/a1.png" alt="AI Job Board" fill sizes="100vw" className="object-cover" />

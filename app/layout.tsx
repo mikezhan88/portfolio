@@ -18,12 +18,12 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", displ
 export const metadata: Metadata = {
   metadataBase: new URL("https://mike-zhan.com"),
   title: {
-    default: `${profile.name} — Software Engineer`,
-    template: `%s — ${profile.name}`,
+    default: `${profile.name} · Software Engineer`,
+    template: `%s · ${profile.name}`,
   },
   description: profile.blurb,
   openGraph: {
-    title: `${profile.name} — Software Engineer`,
+    title: `${profile.name} · Software Engineer`,
     description: profile.blurb,
     url: "https://mike-zhan.com",
     siteName: profile.name,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — Software Engineer`,
+    title: `${profile.name} · Software Engineer`,
     description: profile.blurb,
   },
 };

@@ -65,7 +65,7 @@ export function GalleryTeaser() {
 
         {picks.length === 0 && (
           <p className="mt-4 font-mono text-[11px] text-muted/60">
-            Photo &amp; video — gallery coming soon.
+            Photo &amp; video. Gallery coming soon.
           </p>
         )}
       </div>
