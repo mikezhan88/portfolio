@@ -46,7 +46,7 @@ export function Nav() {
             rel="noopener noreferrer"
             className="rounded-lg border border-line/20 px-3 py-1.5 font-mono text-xs text-accent transition-colors hover:border-accent/40"
           >
-            Résumé
+            Resume
           </a>
         </div>
 
@@ -78,7 +78,7 @@ export function Nav() {
               rel="noopener noreferrer"
               className="font-mono text-sm text-accent"
             >
-              Résumé
+              Resume
             </a>
           </div>
         </div>

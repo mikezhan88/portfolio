@@ -30,7 +30,7 @@ export function Contact() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-muted transition-colors hover:text-fg"
             >
-              <ArrowUpRight size={15} className="text-accent" /> Résumé
+              <ArrowUpRight size={15} className="text-accent" /> Resume
             </a>
           </div>
         </Reveal>
