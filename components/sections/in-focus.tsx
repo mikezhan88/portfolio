@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import { useReducedMotion } from "motion/react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { WebglImage } from "@/components/webgl-image";
 
@@ -13,22 +14,23 @@ const STEPS = [
 
 export function InFocus() {
   const root = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
 
   useGSAP(
     () => {
       if (!root.current) return;
       const mm = gsap.matchMedia();
 
+      // Native CSS `position: sticky` does the pinning (robust on reverse scroll);
+      // GSAP only scrubs the inner animation against the tall section's progress.
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
         const stepsEls = gsap.utils.toArray<HTMLElement>(".focus-step");
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root.current,
             start: "top top",
-            end: "+=2400",
-            pin: true,
+            end: "bottom bottom",
             scrub: 0.6,
-            anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
@@ -39,8 +41,8 @@ export function InFocus() {
         stepsEls.forEach((el, i) => {
           if (i === 0) return;
           const at = i / stepsEls.length;
-          tl.to(stepsEls[i - 1], { autoAlpha: 0, y: -28, duration: 0.25 }, at);
-          tl.fromTo(el, { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0, duration: 0.25 }, at);
+          tl.to(stepsEls[i - 1], { autoAlpha: 0, y: -28 }, at);
+          tl.fromTo(el, { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0 }, at);
         });
       });
     },
@@ -49,46 +51,48 @@ export function InFocus() {
 
   return (
     <>
-      {/* Desktop — pinned scrollytelling */}
+      {/* Desktop + motion: sticky scrollytelling */}
       <section
         ref={root}
-        className="relative hidden h-screen overflow-hidden border-t border-line/10 md:block"
+        className={`relative h-[300vh] border-t border-line/10 ${reduce ? "hidden" : "hidden md:block"}`}
       >
-        <div className="mx-auto flex h-full max-w-6xl items-center gap-14 px-6">
-          <div className="relative flex-1">
-            <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
-              In focus — AI Job Board
-            </p>
-            <div className="relative h-44">
-              {STEPS.map((s, i) => (
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+          <div className="mx-auto flex w-full max-w-6xl items-center gap-14 px-6">
+            <div className="relative flex-1">
+              <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
+                In focus — AI Job Board
+              </p>
+              <div className="relative h-44">
+                {STEPS.map((s, i) => (
+                  <div
+                    key={s.n}
+                    className="focus-step absolute inset-0"
+                    style={{ visibility: i === 0 ? "visible" : "hidden", opacity: i === 0 ? 1 : 0 }}
+                  >
+                    <span className="font-mono text-xs text-muted">{s.n}</span>
+                    <h3 className="mt-2 font-display text-3xl font-medium">{s.t}</h3>
+                    <p className="mt-3 max-w-md leading-relaxed text-muted">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10 h-px w-full bg-line/15">
                 <div
-                  key={s.n}
-                  className="focus-step absolute inset-0"
-                  style={{ visibility: i === 0 ? "visible" : "hidden", opacity: i === 0 ? 1 : 0 }}
-                >
-                  <span className="font-mono text-xs text-muted">{s.n}</span>
-                  <h3 className="mt-2 font-display text-3xl font-medium">{s.t}</h3>
-                  <p className="mt-3 max-w-md leading-relaxed text-muted">{s.d}</p>
-                </div>
-              ))}
+                  className="focus-bar h-px w-full origin-left bg-accent"
+                  style={{ transform: "scaleX(0)" }}
+                />
+              </div>
             </div>
-            <div className="mt-10 h-px w-full bg-line/15">
-              <div
-                className="focus-bar h-px w-full origin-left bg-accent"
-                style={{ transform: "scaleX(0)" }}
-              />
-            </div>
-          </div>
-          <div className="flex-1">
-            <div className="focus-visual aspect-[4/3] overflow-hidden rounded-2xl border border-line/10">
-              <WebglImage src="/a1.png" alt="AI Job Board" className="h-full w-full" />
+            <div className="flex-1">
+              <div className="focus-visual aspect-[4/3] overflow-hidden rounded-2xl border border-line/10">
+                <WebglImage src="/a1.png" alt="AI Job Board" className="h-full w-full" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mobile — static */}
-      <section className="border-t border-line/10 px-6 py-20 md:hidden">
+      {/* Mobile, or reduced-motion: static */}
+      <section className={`border-t border-line/10 px-6 py-20 ${reduce ? "block" : "md:hidden"}`}>
         <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
           In focus — AI Job Board
         </p>
