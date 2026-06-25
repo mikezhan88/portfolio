@@ -39,7 +39,7 @@ function NdaPanel({ className = "" }: { className?: string }) {
           <span
             key={i}
             className="wave-bar w-[3px] rounded-full bg-accent/80"
-            style={{ height: `${h}%`, animationDelay: `${(i % 16) * 0.07}s` }}
+            style={{ height: `${h}%`, animationDelay: `${(i % 16) * 70}ms` }}
           />
         ))}
       </div>
@@ -64,7 +64,6 @@ export function InFocus() {
       // Native CSS `position: sticky` does the pinning (robust on reverse scroll);
       // GSAP only scrubs the inner animation against the tall section's progress.
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        const stepsEls = gsap.utils.toArray<HTMLElement>(".focus-step");
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root.current,
@@ -75,15 +74,14 @@ export function InFocus() {
           },
         });
 
-        tl.to(".focus-bar", { scaleX: 1, ease: "none" }, 0);
-        tl.to(".focus-zoom", { scale: 1.15, ease: "none" }, 0);
-
-        stepsEls.forEach((el, i) => {
-          if (i === 0) return;
-          const at = i / stepsEls.length;
-          tl.to(stepsEls[i - 1], { autoAlpha: 0, y: -28 }, at);
-          tl.fromTo(el, { autoAlpha: 0, y: 28 }, { autoAlpha: 1, y: 0 }, at);
-        });
+        tl.to(".focus-zoom", { scale: 1.12, ease: "none" }, 0);
+        // Slide the step track one slot at a time. Only one step is ever in the
+        // masked window, so the text never overlaps itself (no ghosting/blur).
+        tl.to(
+          ".focus-track",
+          { yPercent: (-100 * (STEPS.length - 1)) / STEPS.length, ease: "none" },
+          0
+        );
       });
     },
     { scope: root }
@@ -113,24 +111,16 @@ export function InFocus() {
               <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
                 {eyebrow}
               </p>
-              <div className="relative h-44">
-                {STEPS.map((s, i) => (
-                  <div
-                    key={s.n}
-                    className="focus-step absolute inset-0"
-                    style={{ visibility: i === 0 ? "visible" : "hidden", opacity: i === 0 ? 1 : 0 }}
-                  >
-                    <span className="font-mono text-xs text-muted">{s.n}</span>
-                    <h3 className="mt-2 font-display text-3xl font-medium">{s.title}</h3>
-                    <p className="mt-3 max-w-md leading-relaxed text-muted">{s.body}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-10 h-px w-full bg-line/15">
-                <div
-                  className="focus-bar h-px w-full origin-left bg-accent"
-                  style={{ transform: "scaleX(0)" }}
-                />
+              <div className="relative h-52 overflow-hidden">
+                <div className="focus-track flex flex-col">
+                  {STEPS.map((s) => (
+                    <div key={s.n} className="flex h-52 flex-col justify-center">
+                      <span className="font-mono text-xs text-muted">{s.n}</span>
+                      <h3 className="mt-2 font-display text-3xl font-medium">{s.title}</h3>
+                      <p className="mt-3 max-w-md leading-relaxed text-muted">{s.body}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
               {cta}
             </div>
