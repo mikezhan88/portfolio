@@ -29,10 +29,6 @@ export function SelectedWork() {
         </Reveal>
 
         <WorkList projects={featured} />
-
-        <p className="mt-4 hidden font-mono text-[11px] text-muted/50 md:block">
-          Hover a project to preview.
-        </p>
       </div>
     </section>
   );

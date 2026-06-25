@@ -11,6 +11,12 @@ import { caseStudies } from "@/data/site";
 const study = caseStudies.find((c) => /current/i.test(c.tag)) ?? caseStudies[0];
 const STEPS = study.sections;
 
+// Deterministic bar heights (no random, so SSR and client match) give the
+// waveform a natural shape even when reduced-motion freezes the animation.
+const WAVE_BARS = Array.from({ length: 56 }, (_, i) =>
+  Math.round(24 + Math.abs(Math.sin(i * 0.55)) * 68)
+);
+
 function NdaPanel({ className = "" }: { className?: string }) {
   return (
     <div
@@ -27,19 +33,20 @@ function NdaPanel({ className = "" }: { className?: string }) {
         <Lock size={12} />
         Under NDA
       </div>
+
+      <div className="relative flex h-24 items-center justify-center gap-[3px] sm:h-28">
+        {WAVE_BARS.map((h, i) => (
+          <span
+            key={i}
+            className="wave-bar w-[3px] rounded-full bg-accent/80"
+            style={{ height: `${h}%`, animationDelay: `${(i % 16) * 0.07}s` }}
+          />
+        ))}
+      </div>
+
       <div className="relative">
         <p className="font-mono text-xs text-muted">{study.company}</p>
         <h4 className="mt-1 font-display text-2xl font-medium">{study.role}</h4>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {study.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-line/15 px-2.5 py-1 font-mono text-[10.5px] text-muted"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
       </div>
     </div>
   );

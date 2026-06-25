@@ -74,6 +74,39 @@ html.lenis body {
   overflow: hidden;
 }
 
+/* Marquee strip for the Selected Work hover reveal */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-x 22s linear infinite;
+  animation-play-state: paused;
+}
+.group:hover .marquee-track,
+.group:focus-within .marquee-track {
+  animation-play-state: running;
+}
+
+/* Audio-style waveform for the case-study spotlight */
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.wave-bar {
+  transform-origin: center;
+  animation: wave 1.3s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
