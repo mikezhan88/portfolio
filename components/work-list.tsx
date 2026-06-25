@@ -2,27 +2,19 @@
 
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useMotionValue, useSpring, useReducedMotion } from "motion/react";
+import { useReducedMotion } from "motion/react";
 import { useState } from "react";
 import type { Project } from "@/data/site";
 
 export function WorkList({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<number | null>(null);
   const reduce = useReducedMotion();
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const sx = useSpring(x, { stiffness: 260, damping: 28, mass: 0.6 });
-  const sy = useSpring(y, { stiffness: 260, damping: 28, mass: 0.6 });
-
-  function onMove(e: React.PointerEvent) {
-    x.set(e.clientX - 132);
-    y.set(e.clientY - 92);
-  }
-
-  const show = active !== null && !reduce;
+  // The preview always shows something (defaults to the first project), and
+  // swaps as you hover a row. Steady position, no cursor-following.
+  const current = active ?? 0;
 
   return (
-    <div onPointerMove={onMove} className="relative">
+    <div className="grid gap-10 lg:grid-cols-[1.5fr_0.85fr]">
       <ul className="border-t border-line/10">
         {projects.map((p, i) => {
           const href = p.demo ?? p.live ?? p.repo ?? "#";
@@ -34,6 +26,8 @@ export function WorkList({ projects }: { projects: Project[] }) {
                 rel="noopener noreferrer"
                 onPointerEnter={() => setActive(i)}
                 onPointerLeave={() => setActive(null)}
+                onFocus={() => setActive(i)}
+                onBlur={() => setActive(null)}
                 className="group flex items-center justify-between gap-4 py-7"
               >
                 <div className="flex items-baseline gap-4">
@@ -59,25 +53,22 @@ export function WorkList({ projects }: { projects: Project[] }) {
         })}
       </ul>
 
-      <motion.div
-        aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-40 hidden h-[184px] w-[264px] overflow-hidden rounded-xl border border-line/15 md:block"
-        style={{ x: sx, y: sy }}
-        animate={{ opacity: show ? 1 : 0, scale: show ? 1 : 0.85 }}
-        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {projects.map((p, i) => (
-          <Image
-            key={p.slug}
-            src={p.image}
-            alt=""
-            fill
-            sizes="264px"
-            className="object-cover transition-opacity duration-200"
-            style={{ opacity: active === i ? 1 : 0 }}
-          />
-        ))}
-      </motion.div>
+      {/* Steady preview panel, desktop only. */}
+      <div aria-hidden className="hidden lg:block">
+        <div className="sticky top-28 aspect-[4/5] overflow-hidden rounded-xl border border-line/10 bg-surface/40">
+          {projects.map((p, i) => (
+            <Image
+              key={p.slug}
+              src={p.image}
+              alt=""
+              fill
+              sizes="400px"
+              className={`object-cover ${reduce ? "" : "transition-opacity duration-500 ease-editorial"}`}
+              style={{ opacity: current === i ? 1 : 0 }}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

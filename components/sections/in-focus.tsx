@@ -1,16 +1,49 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, Lock } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import { gsap, useGSAP } from "@/lib/gsap";
-import { WebglImage } from "@/components/webgl-image";
+import { caseStudies } from "@/data/site";
 
-const STEPS = [
-  { n: "01", t: "The problem", d: "Hiring teams drown in unranked applicants and one-size-fits-all job posts." },
-  { n: "02", t: "What I built", d: "An AI job board with semantic matching, automated applicant ranking, and a full set of employer tools." },
-  { n: "03", t: "The outcome", d: "Faster shortlisting, higher-signal matches, and a hiring funnel that runs itself." },
-];
+// Feature the current-role case study (falls back to the first).
+const study = caseStudies.find((c) => /current/i.test(c.tag)) ?? caseStudies[0];
+const STEPS = study.sections;
+
+function NdaPanel({ className = "" }: { className?: string }) {
+  return (
+    <div
+      className={`relative flex aspect-[4/3] flex-col justify-between overflow-hidden rounded-2xl border border-line/10 bg-surface/50 p-7 sm:p-8 ${className}`}
+    >
+      <div
+        className="focus-zoom absolute inset-0 origin-center"
+        style={{
+          background:
+            "radial-gradient(120% 80% at 80% -10%, rgb(var(--accent) / 0.18), transparent 60%)",
+        }}
+      />
+      <div className="relative flex items-center gap-2 font-mono text-[11px] uppercase tracking-label text-accent">
+        <Lock size={12} />
+        Under NDA
+      </div>
+      <div className="relative">
+        <p className="font-mono text-xs text-muted">{study.company}</p>
+        <h4 className="mt-1 font-display text-2xl font-medium">{study.role}</h4>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {study.stack.map((s) => (
+            <span
+              key={s}
+              className="rounded-full border border-line/15 px-2.5 py-1 font-mono text-[10.5px] text-muted"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function InFocus() {
   const root = useRef<HTMLDivElement>(null);
@@ -36,7 +69,7 @@ export function InFocus() {
         });
 
         tl.to(".focus-bar", { scaleX: 1, ease: "none" }, 0);
-        tl.to(".focus-zoom", { scale: 1.12, ease: "none" }, 0);
+        tl.to(".focus-zoom", { scale: 1.15, ease: "none" }, 0);
 
         stepsEls.forEach((el, i) => {
           if (i === 0) return;
@@ -47,6 +80,17 @@ export function InFocus() {
       });
     },
     { scope: root }
+  );
+
+  const eyebrow = `Case study · ${study.company}`;
+  const cta = (
+    <Link
+      href={`/work/${study.slug}`}
+      className="mt-10 inline-flex items-center gap-1.5 font-mono text-xs text-accent transition-opacity hover:opacity-70"
+    >
+      Read the case study
+      <ArrowUpRight size={14} />
+    </Link>
   );
 
   return (
@@ -60,7 +104,7 @@ export function InFocus() {
           <div className="mx-auto flex w-full max-w-6xl items-center gap-14 px-6">
             <div className="relative flex-1">
               <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
-                In focus · AI Job Board
+                {eyebrow}
               </p>
               <div className="relative h-44">
                 {STEPS.map((s, i) => (
@@ -70,8 +114,8 @@ export function InFocus() {
                     style={{ visibility: i === 0 ? "visible" : "hidden", opacity: i === 0 ? 1 : 0 }}
                   >
                     <span className="font-mono text-xs text-muted">{s.n}</span>
-                    <h3 className="mt-2 font-display text-3xl font-medium">{s.t}</h3>
-                    <p className="mt-3 max-w-md leading-relaxed text-muted">{s.d}</p>
+                    <h3 className="mt-2 font-display text-3xl font-medium">{s.title}</h3>
+                    <p className="mt-3 max-w-md leading-relaxed text-muted">{s.body}</p>
                   </div>
                 ))}
               </div>
@@ -81,11 +125,10 @@ export function InFocus() {
                   style={{ transform: "scaleX(0)" }}
                 />
               </div>
+              {cta}
             </div>
             <div className="flex-1">
-              <div className="focus-visual aspect-[4/3] overflow-hidden rounded-2xl border border-line/10">
-                <WebglImage src="/a1.png" alt="AI Job Board" className="focus-zoom h-full w-full" />
-              </div>
+              <NdaPanel />
             </div>
           </div>
         </div>
@@ -93,21 +136,18 @@ export function InFocus() {
 
       {/* Mobile, or reduced-motion: static */}
       <section className={`border-t border-line/10 px-6 py-20 ${reduce ? "block" : "md:hidden"}`}>
-        <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
-          In focus · AI Job Board
-        </p>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line/10">
-          <Image src="/a1.png" alt="AI Job Board" fill sizes="100vw" className="object-cover" />
-        </div>
+        <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">{eyebrow}</p>
+        <NdaPanel />
         <div className="mt-8 flex flex-col gap-6">
           {STEPS.map((s) => (
             <div key={s.n}>
               <span className="font-mono text-xs text-muted">{s.n}</span>
-              <h3 className="mt-1 font-display text-2xl font-medium">{s.t}</h3>
-              <p className="mt-2 leading-relaxed text-muted">{s.d}</p>
+              <h3 className="mt-1 font-display text-2xl font-medium">{s.title}</h3>
+              <p className="mt-2 leading-relaxed text-muted">{s.body}</p>
             </div>
           ))}
         </div>
+        {cta}
       </section>
     </>
   );
