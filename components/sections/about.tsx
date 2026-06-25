@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 export function About() {
   return (
     <section id="about" className="border-t border-line/10 px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <Reveal>
           <p className="mb-3 font-mono text-[11px] uppercase tracking-label text-muted">
             About

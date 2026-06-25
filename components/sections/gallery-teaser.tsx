@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Camera } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { ZoomGallery } from "@/components/zoom-gallery";
 import { getPhotos } from "@/lib/photos";
 
 const placeholders = ["aspect-[3/4]", "aspect-square", "aspect-[3/4]", "aspect-square", "aspect-[3/4]"];
@@ -11,9 +12,32 @@ export function GalleryTeaser() {
   const featured = photos.filter((p) => p.featured);
   const picks = (featured.length ? featured : photos).slice(0, 5);
 
+  // Once there are enough photos, the teaser becomes a scroll-driven zoom
+  // composition. Until then, it falls back to the grid / placeholder below.
+  if (photos.length >= 5) {
+    return (
+      <section id="gallery" className="border-t border-line/10">
+        <div className="mx-auto flex max-w-7xl items-end justify-between px-6 pt-24 sm:pt-32">
+          <div>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-label text-muted">
+              Off the clock
+            </p>
+            <h2 className="font-display text-3xl font-medium sm:text-4xl">
+              Through the <em className="italic text-accent">lens</em>
+            </h2>
+          </div>
+          <Link href="/photography" className="font-mono text-xs text-accent hover:underline">
+            View gallery →
+          </Link>
+        </div>
+        <ZoomGallery photos={featured.length >= 5 ? featured : photos} />
+      </section>
+    );
+  }
+
   return (
     <section id="gallery" className="border-t border-line/10 px-6 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <Reveal>
           <div className="mb-10 flex items-end justify-between">
             <div>

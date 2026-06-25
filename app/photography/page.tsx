@@ -14,7 +14,7 @@ export default function PhotographyPage() {
 
   return (
     <section className="px-6 pb-28 pt-32">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <p className="mb-3 font-mono text-[11px] uppercase tracking-label text-accent">
           Off the clock · photo &amp; video
         </p>

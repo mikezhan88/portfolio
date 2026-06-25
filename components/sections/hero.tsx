@@ -7,7 +7,7 @@ import { Magnetic } from "@/components/magnetic";
 export function Hero() {
   return (
     <section className="relative flex min-h-[92vh] items-center px-6 pt-24">
-      <div className="mx-auto w-full max-w-6xl">
+      <div className="mx-auto w-full max-w-7xl">
         <p className="mb-6 font-mono text-[11px] uppercase tracking-label text-accent">
           {profile.roles.join("  ·  ")}
         </p>

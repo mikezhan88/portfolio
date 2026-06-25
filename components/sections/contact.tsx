@@ -6,7 +6,7 @@ import { ContactForm } from "@/components/contact-form";
 export function Contact() {
   return (
     <section id="contact" className="border-t border-line/10 px-6 py-28 sm:py-36">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2">
         <Reveal>
           <p className="mb-4 font-mono text-[11px] uppercase tracking-label text-muted">
             Contact

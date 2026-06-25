@@ -24,7 +24,7 @@ export function Nav() {
         scrolled && "border-b border-line/10 bg-bg/70 backdrop-blur-md"
       )}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="font-mono text-sm font-medium tracking-tight">
           {profile.name}
           <span className="text-accent">.</span>

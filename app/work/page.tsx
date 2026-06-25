@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Work" };
 export default function WorkPage() {
   return (
     <section className="px-6 pb-28 pt-32">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <p className="mb-3 font-mono text-[11px] uppercase tracking-label text-muted">Work</p>
         <h1 className="font-display text-4xl font-medium sm:text-5xl">Selected projects</h1>
 

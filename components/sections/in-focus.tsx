@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { useReducedMotion } from "motion/react";
-import { gsap, useGSAP } from "@/lib/gsap";
+import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import { caseStudies } from "@/data/site";
 
 // Feature the current-role case study (falls back to the first).
@@ -64,24 +64,62 @@ export function InFocus() {
       // Native CSS `position: sticky` does the pinning (robust on reverse scroll);
       // GSAP only scrubs the inner animation against the tall section's progress.
       mm.add("(min-width: 768px) and (prefers-reduced-motion: no-preference)", () => {
-        const tl = gsap.timeline({
+        const steps = gsap.utils.toArray<HTMLElement>(".focus-step");
+        const linesOf = (el: HTMLElement) =>
+          el.querySelectorAll<HTMLElement>(".focus-line");
+
+        // Start with only the first step's lines in view; the rest sit below
+        // their masks, fully clipped (no overlap, nothing to read through).
+        steps.forEach((s, i) => gsap.set(linesOf(s), { yPercent: i === 0 ? 0 : 110 }));
+        let current = 0;
+
+        // Scrubbed waveform zoom runs continuously with scroll.
+        gsap.to(".focus-zoom", {
+          scale: 1.12,
+          ease: "none",
           scrollTrigger: {
             trigger: root.current,
             start: "top top",
             end: "bottom bottom",
             scrub: 0.6,
-            invalidateOnRefresh: true,
           },
         });
 
-        tl.to(".focus-zoom", { scale: 1.12, ease: "none" }, 0);
-        // Slide the step track one slot at a time. Only one step is ever in the
-        // masked window, so the text never overlaps itself (no ghosting/blur).
-        tl.to(
-          ".focus-track",
-          { yPercent: (-100 * (STEPS.length - 1)) / STEPS.length, ease: "none" },
-          0
-        );
+        // Discrete step changes: as each threshold is crossed, the old step's
+        // lines wipe out and the new step's lines wipe in (clip mask, staggered).
+        ScrollTrigger.create({
+          trigger: root.current,
+          start: "top top",
+          end: "bottom bottom",
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const idx = Math.min(
+              steps.length - 1,
+              Math.floor(self.progress * steps.length)
+            );
+            if (idx === current) return;
+            const down = idx > current;
+            gsap.to(linesOf(steps[current]), {
+              yPercent: down ? -110 : 110,
+              duration: 0.5,
+              stagger: 0.05,
+              ease: "power3.in",
+              overwrite: true,
+            });
+            gsap.fromTo(
+              linesOf(steps[idx]),
+              { yPercent: down ? 110 : -110 },
+              {
+                yPercent: 0,
+                duration: 0.6,
+                stagger: 0.07,
+                ease: "power3.out",
+                overwrite: true,
+              }
+            );
+            current = idx;
+          },
+        });
       });
     },
     { scope: root }
@@ -106,21 +144,31 @@ export function InFocus() {
         className={`relative h-[300vh] border-t border-line/10 ${reduce ? "hidden" : "hidden md:block"}`}
       >
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <div className="mx-auto flex w-full max-w-6xl items-center gap-14 px-6">
+          <div className="mx-auto flex w-full max-w-7xl items-center gap-14 px-6">
             <div className="relative flex-1">
               <p className="mb-8 font-mono text-[11px] uppercase tracking-label text-accent">
                 {eyebrow}
               </p>
-              <div className="relative h-52 overflow-hidden">
-                <div className="focus-track flex flex-col">
-                  {STEPS.map((s) => (
-                    <div key={s.n} className="flex h-52 flex-col justify-center">
-                      <span className="font-mono text-xs text-muted">{s.n}</span>
-                      <h3 className="mt-2 font-display text-3xl font-medium">{s.title}</h3>
-                      <p className="mt-3 max-w-md leading-relaxed text-muted">{s.body}</p>
+              <div className="relative min-h-[15rem]">
+                {STEPS.map((s) => (
+                  <div key={s.n} className="focus-step absolute inset-0">
+                    <div className="overflow-hidden">
+                      <span className="focus-line block font-mono text-xs text-muted">
+                        {s.n}
+                      </span>
                     </div>
-                  ))}
-                </div>
+                    <div className="mt-2 overflow-hidden">
+                      <h3 className="focus-line font-display text-3xl font-medium leading-[1.15] pb-[0.12em]">
+                        {s.title}
+                      </h3>
+                    </div>
+                    <div className="mt-3 overflow-hidden">
+                      <p className="focus-line max-w-md leading-relaxed text-muted">
+                        {s.body}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
               {cta}
             </div>

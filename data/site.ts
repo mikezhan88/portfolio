@@ -254,6 +254,34 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
+export type Capability = {
+  tag: string;
+  title: string;
+  body: string;
+  items: string[];
+};
+
+export const capabilities: Capability[] = [
+  {
+    tag: "01 · Engineering",
+    title: "Build the product",
+    body: "I build full-stack products end to end, from the data model to the interface, and keep the backend quick and steady as more people use it.",
+    items: ["Next.js", "TypeScript", "Python", "Postgres", "APIs"],
+  },
+  {
+    tag: "02 · Go-to-market",
+    title: "Take it to market",
+    body: "I set up the systems that get a product in front of the right people. Lead signals, automation, and outreach that turn a launch into real conversations.",
+    items: ["Clay", "n8n", "Automation", "Analytics"],
+  },
+  {
+    tag: "03 · Design & content",
+    title: "Make it feel real",
+    body: "I handle the parts that make a product land. The site, the brand, and the photo and video around it.",
+    items: ["Figma", "Photography", "Video", "Brand"],
+  },
+];
+
 export const skills = [
   { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "SQL", "C++", "C", "Go", "Java"] },
   { group: "Frontend", items: ["React", "Next.js", "React Native", "Expo", "Tailwind CSS", "Framer Motion"] },
