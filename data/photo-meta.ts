@@ -5,17 +5,21 @@ export type PhotoMeta = {
   order?: number;
 };
 
-// Optional metadata for the images you drop into /public/photos.
-// Key = the exact filename. Every field is optional: a photo with no entry
-// here still shows up in the grid (its alt text is derived from the filename).
+// Optional per-photo overrides. Photos are added with
+//   npm run photos:add -- <folder> [category]
+// which optimizes them into /public/photos/<category>/ and records size,
+// blur placeholder, and capture date in data/photo-manifest.json.
+// A photo needs NO entry here to appear; the folder name becomes its
+// filter category and photos sort newest-first by capture date.
 //
-//   caption : shown under the thumbnail + in the lightbox, e.g. "Kyoto · 2025"
-//   category: adds it to the filter bar, e.g. "Travel" | "Street" | "Portrait"
-//   featured: include it in the big horizontal strip at the top (keep to ~4)
-//   order   : lower numbers sort first (default order is by filename)
+// Key = relative path ("travel/kyoto-01.jpg") or bare filename.
+//   caption : shown in the lightbox, e.g. "Kyoto · 2025"
+//   category: override the folder-derived category
+//   featured: include in the big horizontal strip up top (keep to ~4)
+//   order   : pin to the front; lower numbers sort first
 //
 // Example:
-//   "kyoto-01.jpg": { caption: "Kyoto · 2025", category: "Travel", featured: true, order: 1 },
+//   "travel/kyoto-01.jpg": { caption: "Kyoto · 2025", featured: true },
 export const photoMeta: Record<string, PhotoMeta> = {};
 
 export const galleryIntro =

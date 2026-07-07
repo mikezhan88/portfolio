@@ -69,7 +69,7 @@ function EmptyState() {
         ))}
       </div>
       <p className="mt-4 font-mono text-[11px] text-muted/50">
-        Gallery coming soon. Drop JPEGs into <code>/public/photos</code>.
+        Gallery coming soon. Add photos with <code>npm run photos:add -- &lt;folder&gt; [category]</code>.
       </p>
     </>
   );
