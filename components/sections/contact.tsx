@@ -15,8 +15,8 @@ export function Contact() {
             Tell me what you&apos;re <em className="italic text-accent">building</em>.
           </h2>
           <p className="mt-6 max-w-md text-base text-muted">
-            Open to full-time roles and freelance projects. A rough idea is enough to start a
-            conversation, and every message lands straight in my inbox.
+            Open to full-time roles and freelance engagements. A rough idea is enough to start
+            the conversation; every message comes straight to me.
           </p>
           <div className="mt-8 flex flex-col gap-3 font-mono text-sm">
             <a

@@ -8,7 +8,7 @@ export const profile = {
   currentCompany: "aimnow.ai",
   headline: ["I build products and bring them to", "market."],
   blurb:
-    "These days I build voice AI agents at aimnow.ai. Before that I shipped investor-ready MVPs for a private equity firm and built go-to-market systems for consulting clients. I do my best work owning a product from idea to real users. Off the clock, I'm usually behind a camera.",
+    "Most products fail somewhere between the code and the customer. I work in that gap: I engineer products that hold up in production, then build the go-to-market systems that earn them users. Right now that means voice AI at aimnow.ai. Off the clock, I'm usually behind a camera.",
   email: "mikezhan8@gmail.com",
   resume: "/Michael-Zhan-Resume.pdf",
   available: "Open to new opportunities & freelance",
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     year: "2025",
     featured: true,
     summary:
-      "A job board that matches people to roles on meaning instead of keywords, with automated applicant ranking and a proper set of employer tools.",
+      "A job board that matches people to roles on meaning instead of keywords, with automated applicant ranking and a complete set of employer tools.",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Claude", "Gemini", "Drizzle", "Clerk", "Inngest"],
     image: "/a1.png",
     demo: "https://www.youtube.com/watch?v=Kq45KaiG-U0",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     year: "2025",
     featured: true,
     summary:
-      "An app for finding volunteer events and causes near you, with a social side that keeps people coming back.",
+      "An app for finding volunteer events and causes near you, with a social layer that keeps people coming back.",
     stack: ["React Native", "Supabase", "Expo", "TypeScript"],
     image: "/vcp.jpg",
     demo: "https://www.youtube.com/shorts/QcLcuYFXQx4",
@@ -271,13 +271,13 @@ export const capabilities: Capability[] = [
   {
     tag: "02 · Go-to-market",
     title: "Take it to market",
-    body: "I set up the systems that get a product in front of the right people. Lead signals, automation, and outreach that turn a launch into real conversations.",
+    body: "I design the systems that put a product in front of the right people. Lead signals, automation, and outreach that turn a launch into real conversations.",
     items: ["Clay", "n8n", "Automation", "Analytics"],
   },
   {
     tag: "03 · Design & content",
     title: "Make it feel real",
-    body: "I handle the parts that make a product land. The site, the brand, and the photo and video around it.",
+    body: "I handle the parts that make a product land. The site, the brand, and the photography and video around it.",
     items: ["Figma", "Photography", "Video", "Brand"],
   },
 ];
