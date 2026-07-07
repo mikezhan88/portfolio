@@ -5,10 +5,12 @@ export type PhotoMeta = {
   order?: number;
 };
 
-// Optional per-photo overrides. Photos are added with
+// Optional per-photo overrides. Photos AND short videos (reels) are added with
 //   npm run photos:add -- <folder> [category]
 // which optimizes them into /public/photos/<category>/ and records size,
-// blur placeholder, and capture date in data/photo-manifest.json.
+// blur placeholder, poster frame, and capture date in data/photo-manifest.json.
+// Videos get a play badge in the grid and play natively in the lightbox;
+// keep them short (under ~90s), long-form belongs on a streaming host.
 // A photo needs NO entry here to appear; the folder name becomes its
 // filter category and photos sort newest-first by capture date.
 //

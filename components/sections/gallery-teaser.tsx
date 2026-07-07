@@ -8,7 +8,8 @@ import { getPhotos } from "@/lib/photos";
 const placeholders = ["aspect-[3/4]", "aspect-square", "aspect-[3/4]", "aspect-square", "aspect-[3/4]"];
 
 export function GalleryTeaser() {
-  const photos = getPhotos();
+  // stills only here: next/image and the zoom composition can't render video
+  const photos = getPhotos().filter((p) => p.kind === "image");
   const featured = photos.filter((p) => p.featured);
   const picks = (featured.length ? featured : photos).slice(0, 5);
 

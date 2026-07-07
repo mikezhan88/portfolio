@@ -1,13 +1,37 @@
 "use client";
 
-import Lightbox from "yet-another-react-lightbox";
+import Lightbox, { type Slide } from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Video from "yet-another-react-lightbox/plugins/video";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/counter.css";
 import type { Photo } from "@/lib/photos";
+
+function toSlide(p: Photo): Slide {
+  if (p.kind === "video") {
+    return {
+      type: "video",
+      width: p.width,
+      height: p.height,
+      poster: p.poster,
+      description: p.caption,
+      controls: true,
+      playsInline: true,
+      autoPlay: true,
+      sources: [{ src: p.src, type: "video/mp4" }],
+    };
+  }
+  return {
+    src: p.src,
+    width: p.width,
+    height: p.height,
+    alt: p.alt,
+    description: p.caption,
+  };
+}
 
 export default function PhotoLightbox({
   photos,
@@ -23,17 +47,12 @@ export default function PhotoLightbox({
       open={index >= 0}
       index={index}
       close={onClose}
-      slides={photos.map((p) => ({
-        src: p.src,
-        width: p.width,
-        height: p.height,
-        alt: p.alt,
-        description: p.caption,
-      }))}
-      plugins={[Zoom, Captions, Counter]}
+      slides={photos.map(toSlide)}
+      plugins={[Zoom, Video, Captions, Counter]}
       animation={{ fade: 240, swipe: 320 }}
       controller={{ closeOnBackdropClick: true }}
       zoom={{ maxZoomPixelRatio: 2 }}
+      video={{ preload: "metadata" }}
       counter={{ container: { style: { top: "unset", bottom: 0, left: 0 } } }}
       captions={{ descriptionTextAlign: "center" }}
       styles={{

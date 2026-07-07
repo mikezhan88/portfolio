@@ -10,7 +10,8 @@ export const metadata: Metadata = { title: "Gallery" };
 export default function PhotographyPage() {
   const photos = getPhotos();
   const categories = getCategories(photos);
-  const featured = photos.filter((p) => p.featured).slice(0, 4);
+  // the WebGL strip is stills-only; videos live in the grid below
+  const featured = photos.filter((p) => p.featured && p.kind === "image").slice(0, 4);
 
   return (
     <section className="px-6 pb-28 pt-32">

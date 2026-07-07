@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { Play } from "lucide-react";
 import {
   RowsPhotoAlbum,
   type Photo as AlbumPhoto,
@@ -14,9 +15,18 @@ import type { Photo } from "@/lib/photos";
 
 const PhotoLightbox = dynamic(() => import("@/components/photo-lightbox"));
 
+type Tile = AlbumPhoto & { blurDataURL?: string; kind: "image" | "video"; duration?: number };
+
+function formatDuration(s?: number) {
+  if (!s) return "";
+  const m = Math.floor(s / 60);
+  const sec = `${s % 60}`.padStart(2, "0");
+  return `${m}:${sec}`;
+}
+
 function renderNextImage(
   { alt = "", title, sizes }: RenderImageProps,
-  { photo, width, height }: RenderImageContext
+  { photo, width, height }: RenderImageContext<Tile>
 ) {
   return (
     <div
@@ -29,10 +39,19 @@ function renderNextImage(
         alt={alt}
         title={title}
         sizes={sizes}
-        placeholder={"blurDataURL" in photo && photo.blurDataURL ? "blur" : undefined}
-        blurDataURL={"blurDataURL" in photo ? (photo.blurDataURL as string) : undefined}
+        placeholder={photo.blurDataURL ? "blur" : undefined}
+        blurDataURL={photo.blurDataURL}
         className="object-cover transition-[transform,opacity] duration-700 ease-editorial group-hover:scale-[1.03]"
       />
+      {photo.kind === "video" && (
+        <>
+          <span className="absolute inset-0 bg-bg/10 transition-colors duration-300 group-hover:bg-bg/0" />
+          <span className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full bg-bg/60 px-2.5 py-1 font-mono text-[10.5px] text-fg backdrop-blur-sm">
+            <Play size={10} className="fill-current" />
+            {formatDuration(photo.duration)}
+          </span>
+        </>
+      )}
     </div>
   );
 }
@@ -52,14 +71,17 @@ export function PhotoGallery({
     [photos, filter]
   );
 
-  const albumPhotos: AlbumPhoto[] = useMemo(
+  const tiles: Tile[] = useMemo(
     () =>
       shown.map((p) => ({
-        src: p.src,
+        // the grid always lays out an image: the poster stands in for videos
+        src: p.kind === "video" ? p.poster ?? p.src : p.src,
         width: p.width,
         height: p.height,
         alt: p.alt,
         blurDataURL: p.blurDataURL,
+        kind: p.kind,
+        duration: p.duration,
       })),
     [shown]
   );
@@ -88,7 +110,7 @@ export function PhotoGallery({
       )}
 
       <RowsPhotoAlbum
-        photos={albumPhotos}
+        photos={tiles}
         targetRowHeight={340}
         rowConstraints={{ singleRowMaxHeight: 480 }}
         spacing={6}
