@@ -8,7 +8,7 @@ export const profile = {
   currentCompany: "aimnow.ai",
   headline: ["I build products and bring them to", "market."],
   blurb:
-    "Most products fail somewhere between the code and the customer. I work in that gap: I engineer products that hold up in production, then build the go-to-market systems that earn them users. Right now that means voice AI at aimnow.ai. Off the clock, I'm usually behind a camera.",
+    "Most products fail somewhere between the code and the customer. I work in that gap: I engineer products that hold up in production, then build the go-to-market systems that earn them users. Off the clock, I'm usually behind a camera.",
   email: "mikezhan8@gmail.com",
   resume: "/Michael-Zhan-Resume.pdf",
   available: "Open to new opportunities & freelance",
