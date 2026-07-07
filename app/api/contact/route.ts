@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   try {
     const { name, email, message, _gotcha } = await req.json();
 
-    // honeypot — silently accept bot submissions
+    // honeypot: silently accept bot submissions
     if (_gotcha) return Response.json({ ok: true });
 
     if (!name || !email || !message) {

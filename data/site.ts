@@ -3,12 +3,12 @@ export const profile = {
   initials: "MZ",
   // eyebrow that runs above the hero headline
   roles: ["Software engineer", "GTM strategist", "Photographer"],
-  // location: resume header says NYC; zip 90025 is LA — confirm.
+  // location: resume header says NYC; zip 90025 is LA: confirm.
   location: "New York City",
   currentCompany: "aimnow.ai",
   headline: ["I build products and bring them to", "market."],
   blurb:
-    "I'm a full-stack engineer and go-to-market strategist who likes owning the whole path, from first commit to first customer. I build the product and the system that takes it to market. Off the clock, I'm usually behind a camera.",
+    "These days I build voice AI agents at aimnow.ai. Before that I shipped investor-ready MVPs for a private equity firm and built go-to-market systems for consulting clients. I do my best work owning a product from idea to real users. Off the clock, I'm usually behind a camera.",
   email: "mikezhan8@gmail.com",
   resume: "/Michael-Zhan-Resume.pdf",
   available: "Open to new opportunities & freelance",
@@ -45,7 +45,7 @@ export const experience: Experience[] = [
     period: "Aug 2025 - May 2026",
     location: "San Diego, CA",
     blurb:
-      "Built and launched full-stack MVPs for live client and investor demos, then stood up the deployment and data pipelines behind them. Delivered 10+ authenticated API endpoints in the process.",
+      "Built and launched full-stack MVPs that were demoed live to clients and investors, then kept iterating on the ones that showed promise. The best went on to produce real revenue and cost savings for the firm's portfolio companies.",
     stack: ["AWS", "Snowflake", "TypeScript", "Python", "CI/CD"],
   },
   {
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     year: "2026",
     featured: true,
     summary:
-      "A platform for finding and posting local golf tournaments, built for a client. Players search by location and format, organizers post events, and the community connects through discussions.",
+      "A platform for finding and posting local golf tournaments, built for a client. Golfers search by location and format; organizers post events and build a community around them.",
     stack: ["Next.js", "TypeScript", "Supabase", "Vercel"],
     image: "/findgolfgames.png",
     live: "https://www.findgolfgames.com",
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     year: "2025",
     featured: true,
     summary:
-      "An AI-powered job board with semantic matching, automated applicant ranking, and a full suite of employer tooling.",
+      "A job board that matches people to roles on meaning instead of keywords, with automated applicant ranking and a proper set of employer tools.",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Claude", "Gemini", "Drizzle", "Clerk", "Inngest"],
     image: "/a1.png",
     demo: "https://www.youtube.com/watch?v=Kq45KaiG-U0",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     year: "2025",
     featured: true,
     summary:
-      "A social-impact app that connects volunteers with causes through event discovery, social networking, and gamified achievement tracking.",
+      "An app for finding volunteer events and causes near you, with a social side that keeps people coming back.",
     stack: ["React Native", "Supabase", "Expo", "TypeScript"],
     image: "/vcp.jpg",
     demo: "https://www.youtube.com/shorts/QcLcuYFXQx4",
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     year: "2023",
     featured: true,
     summary:
-      "A web app and marketing site turning brainwave data into actionable workplace productivity and well-being insights.",
+      "A web app and marketing site that turn raw brainwave data into plain-language reports on focus and well-being at work.",
     stack: ["React", "Python", "Google Cloud", "TypeScript"],
     image: "/n1.png",
     live: "https://www.neuroncognition.com",
@@ -265,7 +265,7 @@ export const capabilities: Capability[] = [
   {
     tag: "01 · Engineering",
     title: "Build the product",
-    body: "I build full-stack products end to end, from the data model to the interface, and keep the backend quick and steady as more people use it.",
+    body: "I take products from the data model up through the interface, then keep them fast as real users arrive.",
     items: ["Next.js", "TypeScript", "Python", "Postgres", "APIs"],
   },
   {

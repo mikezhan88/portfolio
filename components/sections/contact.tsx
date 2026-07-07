@@ -12,10 +12,11 @@ export function Contact() {
             Contact
           </p>
           <h2 className="max-w-md font-display text-4xl font-medium leading-tight sm:text-5xl">
-            Let&apos;s build something <em className="italic text-accent">together</em>.
+            Tell me what you&apos;re <em className="italic text-accent">building</em>.
           </h2>
           <p className="mt-6 max-w-md text-base text-muted">
-            Open to full-time roles and freelance projects. Tell me what you&apos;re working on and I&apos;ll get back to you.
+            Open to full-time roles and freelance projects. A rough idea is enough to start a
+            conversation, and every message lands straight in my inbox.
           </p>
           <div className="mt-8 flex flex-col gap-3 font-mono text-sm">
             <a

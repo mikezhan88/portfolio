@@ -12,7 +12,7 @@ export function About() {
             About
           </p>
           <h2 className="max-w-3xl font-display text-3xl font-medium leading-snug sm:text-4xl">
-            I build the product, then help it find its market.
+            The story so <em className="italic text-accent">far</em>.
           </h2>
         </Reveal>
 

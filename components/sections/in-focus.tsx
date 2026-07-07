@@ -85,7 +85,7 @@ export function InFocus() {
         tl.to(".focus-zoom", { scale: 1.12, ease: "none", duration: steps.length }, 0);
 
         // Each step owns one unit of timeline. Layout per unit: settle-in
-        // (0–0.3), hold (0.3–0.7), wipe-out (0.7–1.0) into the next step.
+        // (0-0.3), hold (0.3-0.7), wipe-out (0.7-1.0) into the next step.
         steps.forEach((el, i) => {
           const lines = linesOf(el);
           // Set initial states eagerly: scrubbed timelines only apply a

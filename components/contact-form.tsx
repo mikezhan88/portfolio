@@ -16,7 +16,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    // honeypot — bots fill hidden fields
+    // honeypot: bots fill hidden fields
     if (((data.get("_gotcha") as string) || "").length > 0) return;
 
     setStatus("sending");
