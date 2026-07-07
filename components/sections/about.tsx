@@ -29,19 +29,19 @@ export function About() {
                   <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-line/10 py-6">
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-display text-lg font-medium">{job.role}</h3>
+                        <h3 className="font-display text-xl font-medium sm:text-2xl">{job.role}</h3>
                         {job.current && (
                           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                         )}
                       </div>
-                      <p className="font-mono text-xs text-accent">
+                      <p className="mt-0.5 font-mono text-[13px] text-accent">
                         {job.company}
                         {job.location ? ` · ${job.location}` : ""}
                       </p>
-                      <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
+                      <p className="mt-3 max-w-xl text-base leading-relaxed text-muted">
                         {job.blurb}
                       </p>
-                      <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10.5px] text-muted/70">
+                      <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-muted/70">
                         {job.stack.map((s) => (
                           <span key={s}>{s}</span>
                         ))}
@@ -49,10 +49,10 @@ export function About() {
                       {study && (
                         <Link
                           href={`/work/${study.slug}`}
-                          className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] text-accent transition-opacity hover:opacity-70"
+                          className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs text-accent transition-opacity hover:opacity-70"
                         >
                           Read the case study
-                          <ArrowUpRight size={13} />
+                          <ArrowUpRight size={14} />
                         </Link>
                       )}
                     </div>
@@ -65,9 +65,9 @@ export function About() {
               })}
               <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-line/10 py-6">
                 <div>
-                  <h3 className="font-display text-lg font-medium">{education.degree}</h3>
-                  <p className="font-mono text-xs text-accent">{education.school}</p>
-                  <p className="mt-2 text-sm text-muted">{education.detail}</p>
+                  <h3 className="font-display text-xl font-medium sm:text-2xl">{education.degree}</h3>
+                  <p className="mt-0.5 font-mono text-[13px] text-accent">{education.school}</p>
+                  <p className="mt-3 text-base text-muted">{education.detail}</p>
                 </div>
                 <span className="whitespace-nowrap font-mono text-[11px] text-muted">
                   {education.period}
@@ -84,12 +84,12 @@ export function About() {
               {skills.map((group) => (
                 <Reveal key={group.group}>
                   <div>
-                    <h4 className="mb-2 font-mono text-xs text-fg">{group.group}</h4>
+                    <h4 className="mb-2.5 font-mono text-sm text-fg">{group.group}</h4>
                     <div className="flex flex-wrap gap-2">
                       {group.items.map((s) => (
                         <span
                           key={s}
-                          className="rounded-full border border-line/15 px-3 py-1 font-mono text-[11px] text-muted"
+                          className="rounded-full border border-line/15 px-3 py-1 font-mono text-xs text-muted"
                         >
                           {s}
                         </span>

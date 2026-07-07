@@ -74,22 +74,131 @@ html.lenis body {
   overflow: hidden;
 }
 
-/* Marquee strip for the Selected Work hover reveal */
-@keyframes marquee-x {
-  from {
-    transform: translateX(0);
+/* Code-native motif animations (components/motifs.tsx) */
+@keyframes motif-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
   }
+  80%,
+  100% {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+.motif-ping {
+  animation: motif-ping 2.4s ease-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@keyframes motif-bar {
+  0% {
+    transform: scaleX(0.2);
+    opacity: 0.4;
+  }
+  45%,
+  70% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0.2);
+    opacity: 0.4;
+  }
+}
+.motif-bar {
+  animation: motif-bar 4.5s ease-in-out infinite;
+  transform-origin: left center;
+  transform-box: fill-box;
+}
+
+@keyframes motif-scan {
+  0%,
+  100% {
+    transform: translateY(12px);
+  }
+  50% {
+    transform: translateY(86px);
+  }
+}
+.motif-scan {
+  animation: motif-scan 3.2s ease-in-out infinite;
+}
+
+@keyframes motif-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  60%,
+  100% {
+    opacity: 0.15;
+  }
+}
+.motif-blink {
+  animation: motif-blink 1.2s steps(1) infinite;
+}
+
+@keyframes motif-node {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.motif-node {
+  animation: motif-node 2.1s ease-in-out infinite;
+}
+
+@keyframes motif-draw {
+  0% {
+    stroke-dasharray: 0 100;
+    opacity: 1;
+  }
+  60% {
+    stroke-dasharray: 100 100;
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 100 100;
+    opacity: 0;
+  }
+}
+.motif-draw {
+  animation: motif-draw 4s ease-in-out infinite;
+}
+
+@keyframes motif-type {
+  0% {
+    transform: scaleX(0);
+  }
+  30%,
+  85% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+.motif-type {
+  animation: motif-type 5s ease-in-out infinite;
+  transform-origin: left center;
+  transform-box: fill-box;
+}
+
+@keyframes motif-spin {
   to {
-    transform: translateX(-50%);
+    transform: rotate(360deg);
   }
 }
-.marquee-track {
-  animation: marquee-x 22s linear infinite;
-  animation-play-state: paused;
-}
-.group:hover .marquee-track,
-.group:focus-within .marquee-track {
-  animation-play-state: running;
+.motif-spin {
+  animation: motif-spin 14s linear infinite;
 }
 
 /* Audio-style waveform for the case-study spotlight */

@@ -6,6 +6,7 @@ import { useReducedMotion } from "motion/react";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { projects } from "@/data/site";
 import { Reveal } from "@/components/reveal";
+import { projectMotifs } from "@/components/motifs";
 
 const featured = projects.filter((p) => p.featured);
 
@@ -19,12 +20,13 @@ function Panel({
   className?: string;
 }) {
   const href = p.demo ?? p.live ?? p.repo ?? "#";
+  const Motif = projectMotifs[p.slug];
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group flex shrink-0 flex-col justify-between rounded-2xl border border-line/10 bg-surface/40 p-8 transition-colors hover:border-line/25 sm:p-10 ${className}`}
+      className={`group flex shrink-0 flex-col rounded-2xl border border-line/10 bg-surface/40 p-8 transition-colors hover:border-line/25 sm:p-10 ${className}`}
     >
       <div className="flex items-center justify-between font-mono text-xs">
         <span className="text-accent">0{i + 1}</span>
@@ -36,7 +38,15 @@ function Panel({
           />
         </span>
       </div>
-      <div className="mt-10">
+
+      {/* Animated motif fills the card's middle */}
+      {Motif && (
+        <div className="my-6 min-h-28 flex-1 opacity-80 transition-opacity duration-500 group-hover:opacity-100 sm:my-8">
+          <Motif />
+        </div>
+      )}
+
+      <div>
         <h3 className="font-display text-3xl font-medium leading-tight sm:text-4xl">{p.title}</h3>
         <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">{p.summary}</p>
         <div className="mt-6 flex flex-wrap gap-x-3 gap-y-1 font-mono text-[10.5px] text-muted/80">

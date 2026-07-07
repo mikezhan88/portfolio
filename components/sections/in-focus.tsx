@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Lock } from "lucide-react";
 import { useReducedMotion } from "motion/react";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { gsap, useGSAP } from "@/lib/gsap";
 import { caseStudies } from "@/data/site";
 
 // Feature the current-role case study (falls back to the first).
@@ -68,57 +68,40 @@ export function InFocus() {
         const linesOf = (el: HTMLElement) =>
           el.querySelectorAll<HTMLElement>(".focus-line");
 
-        // Start with only the first step's lines in view; the rest sit below
-        // their masks, fully clipped (no overlap, nothing to read through).
-        steps.forEach((s, i) => gsap.set(linesOf(s), { yPercent: i === 0 ? 0 : 110 }));
-        let current = 0;
-
-        // Scrubbed waveform zoom runs continuously with scroll.
-        gsap.to(".focus-zoom", {
-          scale: 1.12,
-          ease: "none",
+        // One scrub-locked timeline: every wipe is tied to a fixed scroll
+        // window, so scrolling (at any speed, in either direction) always
+        // renders the same deterministic frame. No triggered tweens to fight
+        // fast or reversed scrolling.
+        const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root.current,
             start: "top top",
             end: "bottom bottom",
-            scrub: 0.6,
+            scrub: 0.8,
+            invalidateOnRefresh: true,
           },
         });
 
-        // Discrete step changes: as each threshold is crossed, the old step's
-        // lines wipe out and the new step's lines wipe in (clip mask, staggered).
-        ScrollTrigger.create({
-          trigger: root.current,
-          start: "top top",
-          end: "bottom bottom",
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const idx = Math.min(
-              steps.length - 1,
-              Math.floor(self.progress * steps.length)
+        tl.to(".focus-zoom", { scale: 1.12, ease: "none", duration: steps.length }, 0);
+
+        // Each step owns one unit of timeline. Layout per unit: settle-in
+        // (0–0.3), hold (0.3–0.7), wipe-out (0.7–1.0) into the next step.
+        steps.forEach((el, i) => {
+          const lines = linesOf(el);
+          // Set initial states eagerly: scrubbed timelines only apply a
+          // tween's from-state once the playhead reaches it, which would
+          // leave later steps visible (overlapping) at progress 0.
+          gsap.set(lines, { yPercent: i === 0 ? 0 : 110 });
+          if (i > 0) {
+            tl.to(lines, { yPercent: 0, duration: 0.3, stagger: 0.06, ease: "power2.out" }, i);
+          }
+          if (i < steps.length - 1) {
+            tl.to(
+              lines,
+              { yPercent: -110, duration: 0.3, stagger: 0.06, ease: "power2.in" },
+              i + 0.7
             );
-            if (idx === current) return;
-            const down = idx > current;
-            gsap.to(linesOf(steps[current]), {
-              yPercent: down ? -110 : 110,
-              duration: 0.5,
-              stagger: 0.05,
-              ease: "power3.in",
-              overwrite: true,
-            });
-            gsap.fromTo(
-              linesOf(steps[idx]),
-              { yPercent: down ? 110 : -110 },
-              {
-                yPercent: 0,
-                duration: 0.6,
-                stagger: 0.07,
-                ease: "power3.out",
-                overwrite: true,
-              }
-            );
-            current = idx;
-          },
+          }
         });
       });
     },
