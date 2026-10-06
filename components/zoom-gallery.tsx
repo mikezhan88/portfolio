@@ -5,15 +5,18 @@ import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import type { Photo } from "@/lib/photos";
 
-// Position + size of each tile in the zoom composition (Olivier Larose style).
+// Position + width of each tile in the zoom composition. Height comes from the
+// photo's own aspect ratio, so nothing is cropped: a landscape stays landscape.
+// Offsets are from the centered position; laid out for a ~16:9 viewport with
+// 3:2 photos. Index 0 is the center tile the scroll zooms into.
 const TILES = [
-  { top: "0vh", left: "0vw", w: "25vw", h: "25vh" },
-  { top: "-30vh", left: "5vw", w: "35vw", h: "30vh" },
-  { top: "-10vh", left: "-25vw", w: "20vw", h: "45vh" },
-  { top: "0vh", left: "27.5vw", w: "25vw", h: "25vh" },
-  { top: "27.5vh", left: "5vw", w: "20vw", h: "25vh" },
-  { top: "27.5vh", left: "-22.5vw", w: "30vw", h: "25vh" },
-  { top: "22.5vh", left: "25vw", w: "15vw", h: "15vh" },
+  { top: "0vh", left: "0vw", w: "24vw" },
+  { top: "-31vh", left: "3vw", w: "28vw" },
+  { top: "-4vh", left: "-28vw", w: "22vw" },
+  { top: "2vh", left: "27vw", w: "24vw" },
+  { top: "31vh", left: "0vw", w: "26vw" },
+  { top: "28vh", left: "-24vw", w: "18vw" },
+  { top: "26vh", left: "24vw", w: "16vw" },
 ];
 
 export function ZoomGallery({ photos }: { photos: Photo[] }) {
@@ -57,7 +60,12 @@ export function ZoomGallery({ photos }: { photos: Photo[] }) {
           >
             <div
               className="relative"
-              style={{ top: TILES[i].top, left: TILES[i].left, width: TILES[i].w, height: TILES[i].h }}
+              style={{
+                top: TILES[i].top,
+                left: TILES[i].left,
+                width: TILES[i].w,
+                aspectRatio: `${p.width} / ${p.height}`,
+              }}
             >
               <Image src={p.src} alt={p.alt} fill sizes="40vw" className="rounded-lg object-cover" />
             </div>
