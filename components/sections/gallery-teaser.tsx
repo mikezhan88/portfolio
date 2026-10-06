@@ -31,7 +31,8 @@ export function GalleryTeaser() {
             View gallery →
           </Link>
         </div>
-        <ZoomGallery photos={featured.length >= 5 ? featured : photos} />
+        {/* featured lead (in their order), then the newest of the rest fill the remaining tiles */}
+        <ZoomGallery photos={[...featured, ...photos.filter((p) => !p.featured)]} />
       </section>
     );
   }
