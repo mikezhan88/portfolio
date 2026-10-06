@@ -11,7 +11,7 @@ export default function PhotographyPage() {
   const photos = getPhotos();
   const categories = getCategories(photos);
   // the WebGL strip is stills-only; videos live in the grid below
-  const featured = photos.filter((p) => p.featured && p.kind === "image").slice(0, 4);
+  const featured = photos.filter((p) => p.featured && p.kind === "image").slice(0, 5);
 
   return (
     <section className="px-6 pb-28 pt-32">
