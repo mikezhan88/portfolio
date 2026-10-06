@@ -30,6 +30,11 @@ export const photoMeta: Record<string, PhotoMeta> = {
   "china/dsc01123.jpg": { featured: true, order: 3 },
   "banff/img-2539.jpg": { featured: true, order: 4 },
   "banff/img-2502.jpg": { featured: true, order: 5 },
+  // 6-9 fill the four corner tiles of the homepage zoom composition
+  "banff/img-2531.jpg": { featured: true, order: 6 },
+  "banff/img-2530.jpg": { featured: true, order: 7 },
+  "china/dsc01731.jpg": { featured: true, order: 8 },
+  "china/dsc01853.jpg": { featured: true, order: 9 },
 };
 
 export const galleryIntro =
