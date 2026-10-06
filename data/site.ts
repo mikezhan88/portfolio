@@ -5,7 +5,7 @@ export const profile = {
   roles: ["Software engineer", "GTM strategist", "Photographer"],
   // location: resume header says NYC; zip 90025 is LA: confirm.
   location: "New York City",
-  currentCompany: "aimnow.ai",
+  currentCompany: "Aim AI",
   headline: ["I build products and bring them to", "market."],
   blurb:
     "Most products fail somewhere between the code and the customer. I work in that gap: I engineer products that hold up in production, then build the go-to-market systems that earn them users. Off the clock, I'm usually behind a camera.",
@@ -31,7 +31,7 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    company: "aimnow.ai",
+    company: "Aim AI",
     role: "Software Engineer",
     period: "May 2026 - Present",
     current: true,
@@ -183,7 +183,7 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "voice-ai-agents",
-    company: "aimnow.ai",
+    company: "Aim AI",
     role: "Software Engineer",
     period: "May 2026 - Present",
     tag: "Current role · Under NDA",
